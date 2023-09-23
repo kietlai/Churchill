@@ -1,4 +1,4 @@
-# Churchill Suite (:new: Project)
+# Churchill Suite (:new: :large_blue_diamond: Project)
 ### A Project By Kiet Lai, Hero Emenalom, Nathan Story
 Churchill Suite is an entry for the **FBLA Competition**. This Project will *possibly* be *adapted* into a *scalable solution for businesses*.
 
@@ -16,12 +16,16 @@ Churchill Suite is an entry for the **FBLA Competition**. This Project will *pos
        - **Invoices**
        - **Expenses**
        - **Taxes due**
+       - **Track days off**
+       - **ETC**
 3. :e-mail: Community Collaboration
    - This allows for **multiple people** to: 
-     - Make Request
+     - Make Request (Sick request, time, etc)
      - Complaints
      - Schedule meetings
-4. :heavy_exclamation_mark: Others coming soon!
+     - Email notifications
+     - Email contact for invoices
+4. :heavy_exclamation_mark: Others coming soon! (**Shopify support coming soon maybe?**)
 > :mega: There will be more additions as customers and as we come up with more. 
 
 ### Todo
@@ -30,7 +34,8 @@ Later features will be put down here based on there completion.
 
 ### Technology Used
 - Next.js
-- Firebase or Supabase or postrgre idk ill figure it out
+- Supabase
 - Tailwind
 - Vercel
 - Stripe
+- Framer Motion
