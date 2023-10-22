@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import Navbar from './components/navbar'
@@ -8,8 +8,25 @@ import { Logo } from './components/logo'
 import LogoClouds from './components/logoCloud'
 import FooterProductPage from './components/footerProductPage'
 
-export default function ProductPresentation() {
+// supabase
+import { createClient } from '@supabase/supabase-js'
+
+console.log(process.env.SUPABASE_KEY)
+const client = createClient('https://hfzmknwnkgiibhmyvbwo.supabase.co',process.env.SUPABASE_KEY as string)
+
+
+export default async function ProductPresentation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const {data , error } = await client
+    .from('jobs')
+    .select('*')
+    
+  if(error){
+    console.log(error)
+  } else {
+    console.log(data)
+  }
 
   return (
     <>
