@@ -25,7 +25,8 @@ Churchill Suite is an entry for the **FBLA Competition**. This Project will *pos
      - Schedule meetings
      - Email notifications
      - Email contact for invoices
-4. :heavy_exclamation_mark: Others coming soon! (**Shopify support coming soon maybe?**)
+4. AI Adivsor 
+5. :heavy_exclamation_mark: Others coming soon! (**Shopify support coming soon maybe?**)
 > :mega: There will be more additions as customers and as we come up with more. 
 
 ### Todo
