@@ -9,6 +9,9 @@ import {
   FingerPrintIcon,
   SquaresPlusIcon,
   XMarkIcon,
+  BellAlertIcon,
+  ChatBubbleBottomCenterIcon,
+  LightBulbIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, RectangleGroupIcon } from '@heroicons/react/20/solid'
 import { Logo } from './logo'
@@ -16,27 +19,31 @@ import { Logo } from './logo'
 const products = [
   {
     name: 'Analytics',
-    description: '',
-    href: '#',
+    description: 'Coming Soon! More information being released soon.',
+    href: '/products/analytics',
     icon: ChartPieIcon,
   },
   {
-    name: 'Engagement',
-    description: 'Speak directly to your customers with our engagement tool',
-    href: '#',
-    icon: CursorArrowRaysIcon,
+    name: 'Communcation',
+    description: 'Speak directly to each other and create a work community',
+    href: '/products/community-collaboration',
+    icon: ChatBubbleBottomCenterIcon,
   },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
+  { 
+    name: 'AI Adivsor and Helper', 
+    description: 'Allow your HR work to be done faster and more streamlined', 
+    href: '/products/ai-adivsor', 
+    icon: LightBulbIcon },
   {
-    name: 'Integrations',
-    description: 'Your customers’ data will be safe and secure',
+    name: 'Dashboard',
+    description: 'This is where all of your information is simply presented to increase your effectiveness and decrease stress.',
     href: '#',
     icon: SquaresPlusIcon,
   },
 ]
 const callsToAction = [
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
-  { name: 'View all products', href: '#', icon: RectangleGroupIcon },
+  { name: 'Contact sales', href: '/contact-sales', icon: PhoneIcon },
+  { name: 'View all products', href: '/products', icon: RectangleGroupIcon },
 ]
 
 function classNames(...classes: string[]) {
@@ -47,7 +54,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="relative isolate z-10 bg-white">
+    <header className="relative isolate z-10 bg-white border-bottom-8 border-gray-400">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
@@ -86,7 +93,7 @@ export default function Navbar() {
                   {products.map((item) => (
                     <div key={item.name} className="group relative rounded-lg p-6 text-sm leading-6 hover:bg-gray-50">
                       <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                        <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+                        <item.icon className="h-6 w-6 text-gray-600 group-hover:text-sky-500" aria-hidden="true" />
                       </div>
                       <a href={item.href} className="mt-6 block font-semibold text-gray-900">
                         {item.name}
@@ -116,18 +123,18 @@ export default function Navbar() {
             </Transition>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/pricing" className="text-sm font-semibold leading-6 text-gray-900">
             Pricing
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/jobs/about" className="text-sm font-semibold leading-6 text-gray-900">
             About Us
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/jobs" className="text-sm font-semibold leading-6 text-gray-900">
             Careers
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
@@ -136,13 +143,9 @@ export default function Navbar() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
+            <a href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Churchill Suites</span>
+              <Logo width={175} height={100}/>
             </a>
             <button
               type="button"
@@ -182,27 +185,27 @@ export default function Navbar() {
                   )}
                 </Disclosure>
                 <a
-                  href="#"
+                  href="/pricing"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Features
+                  Pricing
                 </a>
                 <a
-                  href="#"
+                  href="/jobs/about"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
+                  About Us
                 </a>
                 <a
-                  href="#"
+                  href="/jobs"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Company
+                  Careers
                 </a>
               </div>
               <div className="py-6">
                 <a
-                  href="#"
+                  href="/login"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
