@@ -19,7 +19,7 @@ const frequencies = [
   { value: 'monthly', label: 'Monthly', priceSuffix: '/month per user' },
   { value: 'annually', label: 'Annually', priceSuffix: '/year per user' },
 ]
-const tiers: Tier[] = [
+const tiers:  Readonly<Tier>[] = [
   {
     name: 'Freelancer',
     id: 'tier-freelancer',
