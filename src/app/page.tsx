@@ -8,24 +8,22 @@ import { Logo } from './components/logo'
 import LogoClouds from './components/logoCloud'
 import FooterProductPage from './components/footerProductPage'
 
-// supabase
-import { createClient } from '@supabase/supabase-js'
-
-console.log(process.env.SUPABASE_KEY)
-const client = createClient('https://hfzmknwnkgiibhmyvbwo.supabase.co',process.env.SUPABASE_KEY as string)
+import client from './client'
 
 
 export default async function ProductPresentation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const {data , error } = await client
-    .from('jobs')
+    .from('accounts')
     .select('*')
     
   if(error){
     console.log(error)
   } else {
+    console.log('data')
     console.log(data)
+    console.log('---')
   }
 
   return (
