@@ -4,11 +4,22 @@ import { useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/20/solid'
 
+interface Tier {
+  name: string;
+  id: string;
+  href: string;
+  price: Record<string,string> | string ;
+  description: string;
+  features: string[];
+  featured: boolean;
+  cta: string;
+}
+
 const frequencies = [
   { value: 'monthly', label: 'Monthly', priceSuffix: '/month per user' },
   { value: 'annually', label: 'Annually', priceSuffix: '/year per user' },
 ]
-const tiers = [
+const tiers: Tier[] = [
   {
     name: 'Freelancer',
     id: 'tier-freelancer',
