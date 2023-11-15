@@ -310,7 +310,7 @@ export default function DashboardPage({
                   </button>
 
                   {/* Separator */}
-                  <div className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" />
+                  <div className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true"></div>
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative">
