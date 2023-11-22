@@ -9,7 +9,8 @@ export default async function Login(){
         <>
         
             <button  onClick={(() => signIn({ method: 'email', email: 'heroemenalom73@gmail.com', password: 'password123123' }))}>Sign In</button>
-        
+            <br/>
+            <button onClick={() => signIn({ method: 'google' })}>Sign In with Google</button>
         </>
     )
 }

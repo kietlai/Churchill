@@ -33,6 +33,7 @@ export const signUpWithEmail = async (email: string, pass: string) => {
 export const signIn = async (credentials: LoginCredentials) => {
 
     switch(credentials.method){
+        
         case 'email':
             const {data, error} = await client.auth.signInWithPassword({
                 email: credentials.email,
@@ -50,10 +51,9 @@ export const signIn = async (credentials: LoginCredentials) => {
 
 
         case 'google':
-            // await client.auth.signInWithOAuth({
-            //     provider: method,
-
-            // })
+            await client.auth.signInWithOAuth({
+                provider: "google"
+            })
 
 
             
