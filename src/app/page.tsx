@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 //import { useEffect, useState } from 'react'
 import { Dialog } from '@headlessui/react'
@@ -8,12 +9,20 @@ import { Logo } from './components/logo'
 import LogoClouds from './components/logoCloud'
 import FooterProductPage from './components/footerProductPage'
 import HeroSection from './components/heroSection'
+import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
-import client from './client'
+
 
 
 export default async function ProductPresentation() {
 //  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const client = createClientComponentClient({
+    supabaseUrl: process.env.supabaseUrl,
+    supabaseKey: process.env.SUPABASE_KEY
+  })
+
+  console.log(await client.auth.getUser())
 
   const {data , error } = await client
     .from('accounts')
@@ -27,6 +36,8 @@ export default async function ProductPresentation() {
     console.log(data)
     console.log('---')
   }
+
+  console.log()
 
   return (
     <>
