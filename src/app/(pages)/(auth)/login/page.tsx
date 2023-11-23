@@ -54,7 +54,8 @@ export default function Login(){
 
                     <label htmlFor="password-input">Password</label>
                     <input onChange={e => setPassword(e.target.value)} type="password" name="password" id="password-input" />
-
+                    
+                    <button onClick={handleSubmit} className="flex gap-1 border py-2 px-4 rounded-2xl font-medium hover:bg-gray-300" >Sign in</button>
                 </form>
                 <hr/>
                 <p>or</p>

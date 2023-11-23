@@ -22,7 +22,6 @@ export default async function ProductPresentation() {
     supabaseKey: process.env.SUPABASE_KEY
   })
 
-  console.log(await client.auth.getUser())
 
   const {data , error } = await client
     .from('accounts')
