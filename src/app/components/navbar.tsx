@@ -1,5 +1,4 @@
 'use client'
-
 import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
@@ -16,6 +15,8 @@ import {
 import { ChevronDownIcon, PhoneIcon, RectangleGroupIcon } from '@heroicons/react/20/solid'
 import { Logo } from './logo'
 import client from '../client'
+import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { useRouter } from 'next/navigation'
 
 const products = [
   {
@@ -53,6 +54,15 @@ function classNames(...classes: string[]) {
 
 export default async function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const client = createClientComponentClient({
+    supabaseUrl: process.env.supabaseUrl,
+    supabaseKey: process.env.SUPABASE_KEY
+  })
+
+  const router = useRouter();
+
+  const user = (await client.auth.getUser())
 
 
   return (
@@ -137,9 +147,9 @@ export default async function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+          {user ? <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> : <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>
+          </a>}
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
