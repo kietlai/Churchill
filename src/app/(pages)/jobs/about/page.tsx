@@ -13,12 +13,12 @@ const timeline = [
   {
     name: 'Founded company',
     description:
-      'Nihil aut nam. Dignissimos a pariatur et quos omnis. Aspernatur asperiores et dolorem dolorem optio voluptate repudiandae.',
-    date: 'Aug 2021',
-    dateTime: '2021-08',
+      'Churchill was born out of the vision to create a new simple and efficient system.',
+    date: 'Aug 2023',
+    dateTime: '2023-08',
   },
   {
-    name: 'Secured $65m in funding',
+    name: 'Defining the ',
     description:
       'Provident quia ut esse. Vero vel eos repudiandae aspernatur. Cumque minima impedit sapiente a architecto nihil.',
     date: 'Dec 2021',
@@ -76,21 +76,19 @@ export default function AboutUs() {
   return (
     <>
      <main className="isolate bg-white">
-        <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14">
+        <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-sky-100/20 pt-14">
           <div
-            className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:-mr-80 lg:-mr-96"
+            className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-sky-50 sm:-mr-80 lg:-mr-96"
             aria-hidden="true"
           />
           <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-6 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
               <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:col-span-2 xl:col-auto">
-                We’re a passionate group of people working from around Maryland to build the future of accounting & business management software
+                We&apos;re   building the future of business management and scheduling software.
               </h1>
               <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
                 <p className="text-lg leading-8 text-gray-600">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                  amet fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui
-                  irure qui lorem cupidatat commodo.
+                We’re a passionate group of people based out of Maryland working to build the future of business management and scheduling software. This dynamic team of programmers is here to build the future and help start smaller business and support their journey to success. 
                 </p>
               </div>
               <img
@@ -110,7 +108,7 @@ export default function AboutUs() {
               <div key={item.name}>
                 <time
                   dateTime={item.dateTime}
-                  className="flex items-center text-sm font-semibold leading-6 text-indigo-600"
+                  className="flex items-center text-sm font-semibold leading-6 text-sky-600"
                 >
                   <svg viewBox="0 0 4 4" className="mr-4 h-1 w-1 flex-none" aria-hidden="true">
                     <circle cx={2} cy={2} r={2} fill="currentColor" />

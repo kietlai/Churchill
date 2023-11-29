@@ -1,3 +1,7 @@
+const user = {
+  name: "",
+}
+
 export default function HomePageheader() {
   return(
     <div className="home-page-header">
