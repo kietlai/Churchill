@@ -62,7 +62,11 @@ export default async function Navbar() {
 
   const router = useRouter();
 
-  const user = (await client.auth.getUser())
+  const session = (await client.auth.getSession())
+  let token: string;
+  if(session){
+    token = session.data.session?.access_token!
+  }
 
 
   return (
@@ -147,7 +151,7 @@ export default async function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          {user ? <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> : <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+          {session ? <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> : <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>}
         </div>

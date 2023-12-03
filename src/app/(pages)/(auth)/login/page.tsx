@@ -7,17 +7,20 @@ import {Logo} from '../../../components/logo'
 import GoogleLogo from '../../../PNGs/other/google-logo.png'
 import { FormEvent, useRef, useState } from "react"
 import { createClientComponentClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs"
-
-const client = createClientComponentClient({
-    supabaseKey: process.env.SUPABASE_KEY,
-    supabaseUrl: process.env.supabaseUrl
-})
-
-const signInOAuth = async () => await client.auth.signInWithOAuth({
-    provider: "google"
-})
+import { useRouter } from "next/navigation"
 
 export default function Login(){
+
+    const router = useRouter();
+
+    const client = createClientComponentClient({
+        supabaseKey: process.env.SUPABASE_KEY,
+        supabaseUrl: process.env.supabaseUrl
+    })
+
+    const signInOAuth = async () => await client.auth.signInWithOAuth({
+        provider: "google"
+    })
 
     const [userName, setUsername] = useState<string>('')
     const [password,setPassword] = useState<string>('')
@@ -27,12 +30,16 @@ export default function Login(){
     async function handleSubmit(e: FormEvent){
         e.preventDefault();
 
-        await client.auth.signInWithPassword(
+        const { data, error } =  await client.auth.signInWithPassword(
             {
                 email: userName,
-                password: password
+                password: password 
             }
         )
+
+        console.log(`Logged in as ${data.user?.email}`);
+
+        router.back();
     }
     
 
