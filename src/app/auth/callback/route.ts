@@ -10,7 +10,7 @@ async function GET(req: NextRequest){
     if(code){
         
         const client = createRouteHandlerClient({ cookies }) 
-        await client.auth.exchangeCodeForSession(code)
+        await client.auth.exchangeCodeForSession(code);
     }
 
     return NextResponse.redirect(`${reqUrl.origin}`)
