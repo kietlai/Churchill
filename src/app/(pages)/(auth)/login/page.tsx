@@ -46,7 +46,7 @@ export default function Login(){
 
         console.log(`Logged in as ${data.user?.email}`);
 
-        router.back();
+        router.push('/dashboard')
     }
     
 

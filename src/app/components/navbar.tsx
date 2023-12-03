@@ -17,6 +17,7 @@ import { Logo } from './logo'
 import client from '../client'
 import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const products = [
   {
@@ -63,11 +64,11 @@ export default async function Navbar() {
   const router = useRouter();
 
   const session = (await client.auth.getSession())
-  let token: string;
-  if(session){
-    token = session.data.session?.access_token!
-  }
 
+  const user = session.data.session?.user
+
+
+  console.log(user)
 
   return (
     <header className="relative isolate z-10 bg-white border-bottom-8 border-gray-400">
@@ -151,9 +152,9 @@ export default async function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          {session ? <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> : <a href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+          {user ? <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> : <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
-          </a>}
+          </Link>}
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
