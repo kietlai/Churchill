@@ -24,6 +24,7 @@ export default function Login(){
 
     const [userName, setUsername] = useState<string>('')
     const [password,setPassword] = useState<string>('')
+    const [loginError,setError] = useState<string>('')
 
     const inputForm = useRef<HTMLFormElement>(null)
 
@@ -37,7 +38,11 @@ export default function Login(){
             }
         )
 
-        if(error) console.log(error)
+        if(error) {
+            console.log(error.message)
+            setError(error.message)
+            return
+        }
 
         console.log(`Logged in as ${data.user?.email}`);
 
@@ -67,13 +72,15 @@ export default function Login(){
                     <div className="flex justify-center m-2 ">
                         <button onClick={handleSubmit} className="w-[100px] text-center flex justify-center gap-1 border py-2 px-4 rounded-2xl font-medium hover:bg-gray-300" >Sign in</button>
                     </div>
+                    <span className="text-red-500 flex justify-center">{loginError ?? loginError}</span>
                 </form>
                 <hr/>
                 <p>or</p>
                 {/* onClick={signInOAuth} */}
                 <button onClick={signInOAuth} className="flex gap-1 border py-2 px-4 rounded-2xl font-medium hover:bg-gray-300" >
                     <Image src={GoogleLogo} alt="Google Logo" width='25' height='25' ></Image>
-                    Sign in with Google</button>
+                    Sign in with Google
+                </button>
 
             </main>
         
