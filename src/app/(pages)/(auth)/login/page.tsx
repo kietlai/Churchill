@@ -37,6 +37,8 @@ export default function Login(){
             }
         )
 
+        if(error) console.log(error)
+
         console.log(`Logged in as ${data.user?.email}`);
 
         router.back();
@@ -62,7 +64,9 @@ export default function Login(){
                     <label htmlFor="password-input">Password</label>
                     <input onChange={e => setPassword(e.target.value)} type="password" name="password" id="password-input" />
                     
-                    <button onClick={handleSubmit} className="flex gap-1 border py-2 px-4 rounded-2xl font-medium hover:bg-gray-300" >Sign in</button>
+                    <div className="flex justify-center m-2 ">
+                        <button onClick={handleSubmit} className="w-[100px] text-center flex justify-center gap-1 border py-2 px-4 rounded-2xl font-medium hover:bg-gray-300" >Sign in</button>
+                    </div>
                 </form>
                 <hr/>
                 <p>or</p>
