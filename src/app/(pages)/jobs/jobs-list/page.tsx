@@ -1,4 +1,3 @@
-'use client'
 import Image from 'next/image'
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
@@ -7,13 +6,31 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Logo } from '@/app/components/logo'
 import Navbar from '@/app/components/navbar'
 import FooterProductPage from '@/app/components/footerProductPage'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
-export default function JobOpenings() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export default async function JobOpenings() {
+  const client = createServerComponentClient({
+   cookies: () => cookies() 
+  },{
+    supabaseUrl: process.env.supabaseUrl,
+    supabaseKey: process.env.SUPABASE_KEY
+  })
+
+  const { data, error } = await client.from('jobs').select()
+
+  if(error) console.log(error.message)
 
   return (
     <>
+      <header className='flex flex-col justify-center items-center py-4 gap-2'>
+        <span className='text-blue-500 font-medium text-4xl'>Job Listings</span>
+        <input className='w-[35vw] rounded-md ' type="search" placeholder='Search' />
+      </header>
+      <hr/>
+      <main>
       
+      </main>
     </>
   )
 }

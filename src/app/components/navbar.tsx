@@ -1,5 +1,5 @@
 'use client'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
@@ -14,10 +14,12 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, RectangleGroupIcon } from '@heroicons/react/20/solid'
 import { Logo } from './logo'
-import client from '../client'
 import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { UserResponse } from '@supabase/supabase-js'
+import { setOriginalNode } from 'typescript'
+import { cookies } from 'next/headers'
 
 const products = [
   {
@@ -56,6 +58,8 @@ function classNames(...classes: string[]) {
 export default async function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const [isLoggedIn,setLoggedIn] = useState<boolean>(false);
+
   const client = createClientComponentClient({
     supabaseUrl: process.env.supabaseUrl,
     supabaseKey: process.env.SUPABASE_KEY
@@ -63,12 +67,8 @@ export default async function Navbar() {
 
   const router = useRouter();
 
-  const session = (await client.auth.getSession())
+ 
 
-  const user = session.data.session?.user
-
-
-  console.log(user)
 
   return (
     <header className="relative isolate z-10 bg-white border-bottom-8 border-gray-400">
@@ -152,7 +152,7 @@ export default async function Navbar() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          {user ? <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> : <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+          {isLoggedIn ? <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> : <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </Link>}
         </div>
