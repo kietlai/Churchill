@@ -5,6 +5,7 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
 import { Logo } from '@/app/components/logo'
 import Navbar from '@/app/components/navbar'
+import SearchBar from './SearchBar'
 import FooterProductPage from '@/app/components/footerProductPage'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
@@ -25,7 +26,7 @@ export default async function JobOpenings() {
     <>
       <header className='flex flex-col justify-center items-center py-4 gap-2'>
         <span className='text-blue-500 font-medium text-4xl'>Job Listings</span>
-        <input className='w-[35vw] rounded-md ' type="search" placeholder='Search' />
+        <SearchBar/>
       </header>
       <hr/>
       <main>
