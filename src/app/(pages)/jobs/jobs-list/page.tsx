@@ -10,6 +10,7 @@ import SearchBar from './SearchBar'
 import FooterProductPage from '@/app/components/footerProductPage'
 import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import SearchIcon from './SearchIcon'
+import Link from 'next/link'
 
 interface Job {
   title: string
@@ -45,7 +46,7 @@ export default function JobOpenings() {
       <main>
         <ul>
 
-          {jobs.map((j: any) => <li>{j.title}</li>)}
+          {jobs.map((j: any) => <li key={j.id} className='hover:text-sky-500' > <Link href={`/jobs/view/${j.id}`}>{j.title}</Link> </li>)}
 
         </ul>
       </main>
