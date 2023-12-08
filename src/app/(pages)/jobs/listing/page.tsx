@@ -38,8 +38,8 @@ export default function JobOpenings() {
         </div>
       </header>
       <hr/>
-      <main className='flex gap-5 m-4'>
-        {jobs.map((j: any) => <JobPanel title={j.title} id={j.id} key={j.id} />)}
+      <main className='flex gap-5 m-4 justify-center items-center flex-col  flex-wrap'>
+        {jobs.length > 0 ? jobs.map((j: any) => <JobPanel title={j.title} id={j.id} key={j.id} />) : <span className='flex justify-center grow text-gray-400'>No Results</span>}
       </main>
     </>
   )
