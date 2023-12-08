@@ -1,16 +1,11 @@
 'use client'
-import Image from 'next/image'
-import { ChangeEventHandler, useEffect, useRef, useState } from 'react'
-import { Dialog } from '@headlessui/react'
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
+import { useEffect, useState } from 'react'
 
-import { Logo } from '@/app/components/logo'
-import Navbar from '@/app/components/navbar'
-import SearchBar from './SearchBar'
-import FooterProductPage from '@/app/components/footerProductPage'
-import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import SearchIcon from './SearchIcon'
 import Link from 'next/link'
+
+import JobPanel from './JobPanel'
 
 interface Job {
   title: string
@@ -43,12 +38,8 @@ export default function JobOpenings() {
         </div>
       </header>
       <hr/>
-      <main>
-        <ul>
-
-          {jobs.map((j: any) => <li key={j.id} className='hover:text-sky-500' > <Link href={`/jobs/view/${j.id}`}>{j.title}</Link> </li>)}
-
-        </ul>
+      <main className='flex gap-5 m-4'>
+        {jobs.map((j: any) => <JobPanel title={j.title} id={j.id} key={j.id} />)}
       </main>
     </>
   )
