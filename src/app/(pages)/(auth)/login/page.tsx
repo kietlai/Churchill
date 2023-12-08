@@ -3,7 +3,7 @@
 // import { signIn } from "@/app/client"
 import Image from "next/image"
 
-import {Logo} from '../../../components/logo'
+import {Logo} from '../../../components/Logo'
 import GoogleLogo from '../../../PNGs/other/google-logo.png'
 import { FormEvent, useRef, useState } from "react"
 import { createClientComponentClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs"
