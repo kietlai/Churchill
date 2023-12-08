@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import Logo from 'src/app/PNGs/Background/Large Favicon Brand Color.png'
+import Logo from 'src/app/images/PNGs/Background/Large Favicon Brand Color.png'
 
 export default function NotFound(){
 

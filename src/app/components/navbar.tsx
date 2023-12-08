@@ -13,7 +13,7 @@ import {
   LightBulbIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, RectangleGroupIcon } from '@heroicons/react/20/solid'
-import { Logo } from './logo'
+import { Logo } from './Logo'
 import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -35,13 +35,13 @@ const products = [
     icon: ChatBubbleBottomCenterIcon,
   },
   { 
-    name: 'AI Adivsor and Helper', 
+    name: 'AI Adivsor', 
     description: 'Allow your HR work to be done faster and more streamlined', 
     href: '/products/ai-adivsor', 
     icon: LightBulbIcon },
   {
-    name: 'Dashboard',
-    description: 'This is where all of your information is simply presented to increase your effectiveness and decrease stress.',
+    name: 'AI Customer Interactions',
+    description: 'Allow our new trained GPT to interact with your customers based on what kind of business you are',
     href: '#',
     icon: SquaresPlusIcon,
   },
@@ -215,7 +215,7 @@ export default function Navbar() {
                   About Us
                 </a>
                 <a
-                  href="/jobs"
+                  href="/jobs/listing"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Careers

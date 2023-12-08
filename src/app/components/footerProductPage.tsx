@@ -1,31 +1,26 @@
 import { JSX, SVGProps } from "react"
-import { Logo } from "./logo"
+import { Logo } from "./Logo"
 
 const navigation = {
   solutions: [
-    { name: 'Employee Management', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'AI Adivsor', href: '#' },
-    { name: 'Insights', href: '#' },
+    { name: "Employee Management", href: "#" },
+    { name: "AI Customer Interactions", href: "#" },
+    { name: "AI Adivsor", href: "#" },
+    { name: "Insights", href: "#" },
   ],
   support: [
-    { name: 'Pricing', href: '#' },
-    { name: 'Guides', href: '#' },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Guides", href: "#" },
   ],
   company: [
-    { name: 'About', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Partners', href: '#' },
+    { name: "About", href: "/jobs/about" },
+    { name: "Jobs", href: "/jobs/listing" },
   ],
-  legal: [
-    { name: 'Claim', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
-  ],
+
   social: [
     {
-      name: 'Instagram',
-      href: 'https://www.instagram.com/churchill.app/',
+      name: "Instagram",
+      href: "https://www.instagram.com/churchill.app/",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -95,18 +90,6 @@ export default function FooterProductPage() {
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">Company</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {navigation.company.map((item) => (
-                    <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.legal.map((item) => (
                     <li key={item.name}>
                       <a href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
                         {item.name}

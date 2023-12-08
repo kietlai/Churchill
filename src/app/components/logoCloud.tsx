@@ -22,8 +22,8 @@ export default function LogoClouds() {
           />
           <img
             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-            src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg"
-            alt="Tuple"
+            src="https://www.originwirelessai.com/wp-content/themes/origin-theme/img/logo-origin.svg"
+            alt="Origin Wireless"
             width={158}
             height={48}
           />
