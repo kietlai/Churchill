@@ -4,7 +4,7 @@
 import Image from "next/image"
 
 import {Logo} from '../../../components/Logo'
-import GoogleLogo from '../../../PNGs/other/google-logo.png'
+import GoogleLogo from '../../../images/PNGs/other/google-logo.png'
 import { FormEvent, useRef, useState } from "react"
 import { createClientComponentClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { useRouter } from "next/navigation"
