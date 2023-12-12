@@ -10,8 +10,8 @@ interface Props {
 }
 
 const JobPanel = ({ id,title }: Props) => (
-    <>
-        <div className="flex justify-around items-center basis-[150px] w-[70%] border border-gray-200 rounded-md ">
+    <>  
+        <div className="flex justify-around items-center basis-[150px] w-[70%] border border-gray-200 rounded-md">
             <p className=" grow text-2xl font-medium text-sky-500 p-2 text-center ">{title}</p>
             <Link className="basis-[400px] text-center " href={`/jobs/view/${id}`}>
 
