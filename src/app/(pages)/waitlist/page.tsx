@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Dialog } from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
-import Stats from '@/app/components/dashboardComponents/Stats'
+import Stats from '@/app/components/DashboardComponents/Stats'
 
 export default function ProductPresentation() {
   return (
