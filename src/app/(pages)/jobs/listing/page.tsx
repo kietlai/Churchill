@@ -22,7 +22,7 @@ export default function JobOpenings() {
 
   useEffect(() => {
 
-    client.from('jobs').select().like("title",`%${query}%`)
+    client.from('jobs').select().ilike("title",`%${query.toLowerCase()}%`)
       .then((res) => setJobs(res.data))
       
   },[query])
