@@ -27,13 +27,6 @@ const timeline = [
     date: 'Feb 2024',
     dateTime: '2024-02',
   },
-  {
-    name: 'PLANNED Global launch of product',
-    description:
-      'Fully released for new businesses to use it.',
-    date: 'April 2024',
-    dateTime: '2024-04',
-  },
 ]
 
 export default function Timeline() {

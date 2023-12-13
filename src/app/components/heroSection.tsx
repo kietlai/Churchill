@@ -11,7 +11,8 @@ export default function HeroSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="relative isolate overflow-hidden bg-white">
+    <>
+      <div className="relative isolate overflow-hidden bg-white">
         <svg
           className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
           aria-hidden="true"
@@ -79,5 +80,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+    </>
   )
 }
