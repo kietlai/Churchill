@@ -1,3 +1,4 @@
+'use client'
 import { useRef, useState } from 'react'
 import GoogleLogo from '../../../images/PNGs/other/google-logo.png'
 import Image from 'next/image'
