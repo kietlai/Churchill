@@ -14,6 +14,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -43,6 +44,13 @@ export default function DashboardPage({
   children: React.ReactNode
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const client = createClientComponentClient({
+    supabaseUrl: process.env.supabaseUrl,
+    supabaseKey: process.env.SUPABASE_KEY
+  })
+
+  // const user = client.auth.getUser().then(res => res.data.user.)
 
   return (
     <>
