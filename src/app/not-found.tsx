@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import Logo from 'src/app/images/PNGs/Background/Large Favicon Brand Color.png'
+import Logo from '@/app/images/PNGs/Large Favicon Brand Color.png'
 
 export default function NotFound(){
 

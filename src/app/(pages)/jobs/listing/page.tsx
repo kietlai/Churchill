@@ -34,7 +34,7 @@ export default function JobOpenings() {
   return (
     <>
       <header className='flex flex-col justify-center items-center py-4 gap-2'>
-        <span className='text-sky-500 font-medium text-4xl'>Job Listings</span>
+        <span className='text-black font-medium text-4xl'>Job Listings</span>
         <div className="flex justify-center items-center w-[35vw] min-w-[300px] border px-5 focus-within:border-blue-500">
           <SearchIcon/>
           <input onChange={(e) => setQuery(e.target.value)} className='grow border-none outline-[none]' type="text" placeholder='Search' />
