@@ -3,23 +3,12 @@ import { useRef, useState } from 'react'
 import GoogleLogo from '../../../images/PNGs/other/google-logo.png'
 import Image from 'next/image'
 
+import { createNewUser } from '@/app/actions'
 
-export default async function SignUp(){
 
-    //  input states
-    const [firstName,setFName] = useState<string>('');
-    const [lastName,setLName] = useState<string>('');
-    const [birthday,setBirth] = useState<Date>( new Date() );
-    const [email,setEmail] = useState<string>('');
-    const [phoneNumber,setPhoneNumber] = useState<number>(0);
+export default function SignUp(){
 
-    // references to html inputs
-    const firstNameInput = useRef();
-    const lastNameInput = useRef();
-    const birthdayInput = useRef();
-    const emailInput = useRef();
-    const numberInput = useRef();
-
+    
     // symbol showing a field is required
     const Star = () => <span className="text-red-500">*</span>
 
@@ -29,7 +18,7 @@ export default async function SignUp(){
         
             <main className="flex justify-center h-[50vh] w-[100%] ">
 
-                <form action="" className="flex flex-col basis-[55%] border-t-sky-500 border-t-8 shadow-md ">
+                <form action={createNewUser} className="flex flex-col basis-[55%] border-t-sky-500 border-t-8 shadow-md ">
                     
                     {/* name field */}
                     <div className=" flex justify-start gap-10 p-3">
@@ -37,8 +26,8 @@ export default async function SignUp(){
                             <span className="font-medium text-xl">Name </span>
                             <Star/>
                         </div>
-                        <input className="grow border-gray-300" type="text" placeholder="First Name" required/>
-                        <input className="grow border-gray-300" type="text" placeholder="Last Name" required />
+                        <input name="first_name" className="grow border-gray-300" type="text" placeholder="First Name" required/>
+                        <input name="last_name" className="grow border-gray-300" type="text" placeholder="Last Name" required />
                     </div>
                     
                     {/* birthday field */}
@@ -47,7 +36,7 @@ export default async function SignUp(){
                             <span className="font-medium text-xl">Birth Date </span>
                             <Star/>
                         </div>
-                        <input className="basis-1/2 grow border-gray-300" type="date" placeholder="Birthdate" required/>
+                        <input name="birth_date" className="basis-1/2 grow border-gray-300" type="date" placeholder="Birthdate" required/>
                     </div>
 
                     {/* email field */}
@@ -56,7 +45,7 @@ export default async function SignUp(){
                             <span className="font-medium text-xl ">Email </span>
                             <Star/>
                         </div>
-                        <input className="basis-1/2 grow border-gray-300" type="text" placeholder="name@example.com" required/>
+                        <input name="email" className="basis-1/2 grow border-gray-300" type="text" placeholder="name@example.com" required/>
                     </div>
                     
                     {/* phone-number field */}
@@ -65,7 +54,7 @@ export default async function SignUp(){
                             <span className="font-medium text-xl ">Phone # </span>
                             
                         </div>
-                        <input className="basis-1/3 border-gray-300" type="tel" placeholder="+1 123-456-7890" pattern="[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9]"/>
+                        <input name="phone_number" className="basis-1/3 border-gray-300" type="tel" placeholder="+1 123-456-7890" pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                     </div>
 
                     {/* sign-up button */}
