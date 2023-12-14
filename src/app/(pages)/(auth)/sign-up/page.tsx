@@ -4,7 +4,9 @@ import GoogleLogo from '../../../images/PNGs/other/google-logo.png'
 import Image from 'next/image'
 
 import { createNewUser } from '@/app/actions'
-import PasswordCounter from './PasswordChecker'
+import PasswordChecker from './PasswordChecker'
+
+import Logo from '@/app/images/PNGs/Large Favicon Brand Color.png'
 
 
 export default function SignUp(){
@@ -29,9 +31,10 @@ export default function SignUp(){
     return (
         <>
         
-            <main className="flex justify-center w-[100%] ">
+            <main className="flex flex-col items-center w-[100%] ">
+                <Image src={Logo} height={90} alt="Churchill Logo" />
 
-                <form action={createNewUser} className="flex flex-col py-6 basis-[85%] md:basis-[75%] lg:basis-[55%] border-t-sky-500 border-t-8 shadow-md ">
+                <form action={createNewUser} className="flex flex-col py-6 w-[60%] md:basis-[75%] lg:basis-[55%] border-t-sky-500 border-t-8 shadow-md ">
                     
                     {/* name field */}
                     <div className=" flex flex-col p-3 mx-2">
@@ -89,7 +92,7 @@ export default function SignUp(){
                             <input onChange={(e) => setConfPwd(e.target.value)} name="password" className="rounded-md basis-1/2 grow border-gray-300" type="password" minLength={8} placeholder="Confirm Password" required/>
                         </div>
                     </div>
-                    <PasswordCounter password={pwd} />
+                    <PasswordChecker password={pwd} />
 
                     <span className='text-red-500 text-center'>{error}</span>
                     
@@ -97,7 +100,7 @@ export default function SignUp(){
 
                     {/* sign-up button */}
                     <div className="my-6 flex justify-center ">
-                        <input type="submit" value="Sign up" className="px-4 py-2 w-[14rem] rounded-2xl hover:cursor-pointer hover:bg-sky-500 hover:text-white border border-sky-500 text-sky-500 font-medium" />
+                        <input type="submit" value="Sign Up" className="px-4 py-2 w-[14rem] rounded-2xl hover:cursor-pointer hover:bg-sky-500 hover:text-white border border-sky-500 text-sky-500 font-medium" />
                     </div>
 
                     <div className="flex items-center px-2">
