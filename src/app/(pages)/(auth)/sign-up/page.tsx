@@ -40,8 +40,8 @@ export default function SignUp(){
                             <Star/>
                         </div>
                         <div className='flex flex-col gap-2 md:flex-row'>
-                            <input name="first_name" className="grow border-gray-300" type="text" placeholder="First Name" required/>
-                            <input name="last_name" className="grow border-gray-300" type="text" placeholder="Last Name" required />
+                            <input name="first_name" className="rounded-md grow border-gray-300" type="text" placeholder="First Name" required/>
+                            <input name="last_name" className="rounded-md grow border-gray-300" type="text" placeholder="Last Name" required />
                         </div>
                     </div>
                     
@@ -51,7 +51,7 @@ export default function SignUp(){
                             <span className="font-medium text-sm">Birth Date </span>
                             <Star/>
                         </div>
-                        <input name="birth_date" className="basis-1/2 grow border-gray-300" type="date" placeholder="Birthdate" required/>
+                        <input name="birth_date" className="rounded-md basis-1/2 grow border-gray-300" type="date" placeholder="Birthdate" required/>
                     </div>
 
                     {/* email + phone-number field */}
@@ -63,7 +63,7 @@ export default function SignUp(){
                                 <span className="font-medium text-sm ">Email </span>
                                 <Star/>
                             </div>
-                            <input name="email" className="basis-1/2 grow border-gray-300" type="text" placeholder="name@example.com" required/>
+                            <input name="email" className="rounded-md basis-1/2 grow border-gray-300" type="text" placeholder="name@example.com" required/>
                         </div>
 
                         {/* phone-number field */}
@@ -72,7 +72,7 @@ export default function SignUp(){
                                 <span className="font-medium text-sm ">Phone # </span>
                                 
                             </div>
-                            <input name="phone_number" className="basis-1/3 border-gray-300" type="tel" placeholder="+1 123-456-7890" pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
+                            <input name="phone_number" className="rounded-md basis-1/3 border-gray-300" type="tel" placeholder="+1 123-456-7890" pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
                         </div>
                     </div>
 
@@ -85,8 +85,8 @@ export default function SignUp(){
                             <Star/>
                         </div>
                         <div className='flex gap-2 flex-col md:flex-row'>
-                            <input onChange={(e) => setPwd(e.target.value)} className="basis-1/2 grow border-gray-300" type="password" minLength={8} placeholder="Enter Password" required/>
-                            <input onChange={(e) => setConfPwd(e.target.value)} name="password" className="basis-1/2 grow border-gray-300" type="password" minLength={8} placeholder="Confirm Password" required/>
+                            <input onChange={(e) => setPwd(e.target.value)} className="rounded-md basis-1/2 grow border-gray-300" type="password" minLength={8} placeholder="Enter Password" required/>
+                            <input onChange={(e) => setConfPwd(e.target.value)} name="password" className="rounded-md basis-1/2 grow border-gray-300" type="password" minLength={8} placeholder="Confirm Password" required/>
                         </div>
                     </div>
                     <PasswordCounter password={pwd} />
