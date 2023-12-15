@@ -13,6 +13,7 @@ export default function HeroSection() {
   return (
     <>
       <div className="relative isolate overflow-hidden bg-white">
+        {/* background svg */}
         <svg
           className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
           aria-hidden="true"
@@ -31,11 +32,14 @@ export default function HeroSection() {
           </defs>
           <rect width="100%" height="100%" strokeWidth={0} fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)" />
         </svg>
+
+        {/* Main part of the hero section */}
+
         <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pb-40">
             <Logo width={500} height={150} />
             <div className="mt-24 sm:mt-32 lg:mt-16">
-              <a href="#" className="inline-flex space-x-6">
+              <a href="/careers" className="inline-flex space-x-6">
                 <span className="rounded-full bg-sky-500/10 px-3 py-1 text-sm font-semibold leading-6 text-sky-500 ring-1 ring-inset ring-sky-500/10">
                   What&apos;s new
                 </span>
@@ -54,8 +58,8 @@ export default function HeroSection() {
             
             <div className="mt-10 flex items-center gap-x-6">
               <a
-                href="#"
-                className="rounded-md bg-sky-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+                href="/"
+                className="rounded-md bg-sky-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
               >
                 Get started
               </a>

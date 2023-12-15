@@ -1,51 +1,31 @@
-export default function Testimonial() {
+export default function TT() {
   return (
-    <div className="bg-white py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden bg-gray-900 px-6 py-20 shadow-xl sm:rounded-3xl sm:px-10 sm:py-24 md:px-12 lg:px-20">
-          <img
-            className="absolute inset-0 h-full w-full object-cover brightness-150 saturate-0"
-            src="https://www.originwirelessai.com/wp-content/uploads/2022/10/staff3.jpg"
-            alt="Origin Wireless"
-          />
-          <div className="absolute inset-0 bg-gray-500/90 mix-blend-multiply" />
-          <div className="absolute -left-80 -top-56 transform-gpu blur-3xl" aria-hidden="true">
-            <div
-              className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-r from-sky-400 to-emerald-700 opacity-[0.45]"
-              style={{
-                clipPath:
-                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-              }}
+    <section className="isolate overflow-hidden bg-white px-6 lg:px-8 -z-40">
+      <div className="relative mx-auto max-w-2xl py-24 sm:py-32 lg:max-w-4xl -z-30">
+        <div className="absolute left-1/2 top-0 -z-20 h-[50rem] w-[90rem] -translate-x-1/2 bg-[radial-gradient(50%_100%_at_top,theme(colors.sky.100),white)] opacity-20 lg:left-36" />
+        <div className="absolute inset-y-0 right-1/2 -z-20 mr-12 w-[150vw] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-sky-600/10 ring-1 ring-indigo-50 sm:mr-20 md:mr-0 lg:right-full lg:-mr-36 lg:origin-center" />
+        <figure className="grid grid-cols-1 items-center gap-x-6 gap-y-8 lg:gap-x-10 -z-10">
+          <div className="relative col-span-2 lg:col-start-1 lg:row-start-2">
+          
+            <blockquote className="text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
+              <p>
+                “This product during alpha testing has allowed us to more effectively work together. This product has also made our PTO management easier. Overall this tool is a great organizational help.”
+              </p>
+            </blockquote>
+          </div>
+          <div className="col-end-1 w-16 lg:row-span-4 lg:w-72">
+            <img
+              className="rounded-xl bg-indigo-50 lg:rounded-3xl"
+              src="https://www.originwirelessai.com/wp-content/uploads/2022/10/Ray_1@2x.png"
+              alt=""
             />
           </div>
-          <div
-            className="hidden md:absolute md:bottom-16 md:left-[50rem] md:block md:transform-gpu md:blur-3xl"
-            aria-hidden="true"
-          >
-            <div
-              className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-r from-sky-400 to-sky-600 opacity-25"
-              style={{
-                clipPath:
-                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-              }}
-            />
-          </div>
-          <div className="relative mx-auto max-w-2xl lg:mx-0">
-            <img className="h-12 w-auto" src="https://www.originwirelessai.com/wp-content/themes/origin-theme/img/logo-origin.svg" alt="" />
-            <figure>
-              <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
-                <p>
-                  “This product during alpha testing has allowed us to more effectively work together. This product has also made our PTO management easier. Overall this tool is a great organizational help.”
-                </p>
-              </blockquote>
-              <figcaption className="mt-6 text-base text-white">
-                <div className="font-semibold"> Dr. Quoc Lai</div>
-                <div className="mt-1">Chief Engineering Officer of Origin Wireless</div>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
+          <figcaption className="text-base lg:col-start-1 lg:row-start-3">
+            <div className="font-semibold text-gray-900">Dr. Hung-Quoc &#40;Quoc&#41; Lai</div>
+            <div className="mt-1 text-gray-500">Chief Engineering Officer of Origin Wireless</div>
+          </figcaption>
+        </figure>
       </div>
-    </div>
+    </section>
   )
 }
