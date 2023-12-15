@@ -1,4 +1,4 @@
-
+import classnames from 'classnames'
 interface Props {
     password: string
 }
@@ -11,7 +11,7 @@ const PasswordCounter = ({password}: Props) => {
         
             <div className="flex gap-1 justify-center">
 
-                {bubbles.map(k => <div className="h-[1rem] basis-[1rem] border border-gray-400 rounded-3xl"></div>) }
+                {bubbles.map((k,i) => <div className={`${classnames({'bg-black-500': password.length >= i})} h-[1rem] basis-[1rem] border border-gray-300 rounded-3xl`}></div>) }
 
             </div>
         
