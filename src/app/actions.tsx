@@ -16,7 +16,7 @@ export async function createNewUser(formData: FormData){
     const userSchema = z.object({
         firstName: z.string(),
         lastName: z.string(),
-        birthdate: z.date(),
+        birthDate: z.date(),
         email: z.string(),
         password: z.string().min(8),
         phoneNumber: z.number().optional()
@@ -25,7 +25,7 @@ export async function createNewUser(formData: FormData){
     const newUser = {
         firstName: formData.get('first_name'),
         lastName: formData.get('last_name'),
-        birthdate: new Date(formData.get('birth_date') as string),
+        birthDate: new Date(formData.get('birth_date') as string),
         password: formData.get('password'),
         email: formData.get('email'),
         phoneNumber: Number.parseInt(formData.get('phone_number') as string)
@@ -42,12 +42,12 @@ export async function createNewUser(formData: FormData){
             
         })
 
-        // await client.from('accounts').insert({
+        const { firstName,lastName,birthDate,email,phoneNumber } = newUser
+        
+        const test = await client.from('accounts').insert([
+            { id: newSignUp.data.user?.id, firstName, lastName, birthDate, phoneNumber }
+        ])
 
-        // })
-
-
-        redirect('/dashboard')
     }
 
 
