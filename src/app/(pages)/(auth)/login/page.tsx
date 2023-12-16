@@ -3,7 +3,7 @@
 // import { signIn } from "@/app/client"
 import Image from "next/image"
 
-import {Logo} from '../../../components/Logo'
+// import {Logo} from '../../../components/Logo'
 import GoogleLogo from '../../../images/PNGs/other/google-logo.png'
 import { FormEvent, useRef, useState } from "react"
 import { createClientComponentClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs"
@@ -64,10 +64,10 @@ export default function Login(){
                 <form onSubmit={handleSubmit} ref={inputForm} className="w-[300px] flex justify-center flex-col">
 
                     <label htmlFor="username-input">Email</label>
-                    <input onChange={e => setUsername(e.target.value)} type="text" name="username" id="username-input" />
+                    <input className="rounded-md border border-gray-400" onChange={e => setUsername(e.target.value)} type="text" name="username" id="username-input" />
 
                     <label htmlFor="password-input">Password</label>
-                    <input onChange={e => setPassword(e.target.value)} type="password" name="password" id="password-input" />
+                    <input className="rounded-md border-gray-400" onChange={e => setPassword(e.target.value)} type="password" name="password" id="password-input" />
                     
                     <div className="flex justify-center m-2 ">
                         <button onClick={handleSubmit} className="w-[100px] text-center flex justify-center gap-1 border py-2 px-4 rounded-2xl font-medium hover:bg-gray-300" >Sign in</button>

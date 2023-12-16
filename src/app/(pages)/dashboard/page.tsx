@@ -21,7 +21,7 @@ export default async function ProductPresentation() {
   const user = await (await client.auth.getUser()).data.user
 
   if(!user){
-    redirect('/sign-up')
+    redirect('/login')
   }
 
   return (

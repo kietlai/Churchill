@@ -18,6 +18,7 @@ import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs
 import CLogo from '@/app/images/PNGs/Large Favicon Brand Color.png'
 import Image from 'next/image'
 import {z} from 'zod'
+import { useRouter } from 'next/navigation'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -64,6 +65,8 @@ export default function DashboardPage({
     birthDate: new Date(),
     email: ""
   })
+
+  const router = useRouter();
 
   useEffect(() => {
     client.auth.getUser()
@@ -391,7 +394,7 @@ export default function DashboardPage({
                           </Menu.Item>
                           
                         ))}
-                        <button onClick={ async () => await client.auth.signOut()} className='flex justify-start hover:bg-gray-50 px-3 py-1 w-[100%] text-sm leading-6 text-gray-900'>Sign out</button>
+                        <button onClick={ async () => {await client.auth.signOut(); router.refresh()}} className='flex justify-start hover:bg-gray-50 px-3 py-1 w-[100%] text-sm leading-6 text-gray-900'>Sign out</button>
                       </Menu.Items>
                     </Transition>
                   </Menu>
