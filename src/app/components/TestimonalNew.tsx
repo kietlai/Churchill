@@ -1,6 +1,10 @@
+import Header from "./Header"
+
 export default function Testimonial() {
   return (
     <>
+      <Header section="" headline="What are our customers thoughts?" desc="" />
+
       <section className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:px-8 -z-30">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20" />
         <div className="absolute inset-y-0 right-1/2 -z-20 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
@@ -14,8 +18,8 @@ export default function Testimonial() {
             </blockquote>
             <figcaption className="mt-10">
               <img
-                className="mx-auto h-10 w-10 rounded-full"
-                src="https://www.originwirelessai.com/wp-content/uploads/2022/10/Ray_1@2x.png"
+                className="mx-auto h-20 w-20 rounded-full"
+                src="/People/DrHungQuoc.png"
                 alt=""
               />
               <div className="mt-4 flex items-center justify-center space-x-3 text-base">

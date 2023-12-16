@@ -20,7 +20,7 @@ import Link from 'next/link'
 import { UserResponse } from '@supabase/supabase-js'
 import { setOriginalNode } from 'typescript'
 import { cookies } from 'next/headers'
-
+import Image from 'next/image'
 const products = [
   {
     name: 'Analytics',
@@ -55,6 +55,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
+
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -67,18 +68,18 @@ export default function Navbar() {
 
   const router = useRouter();
 
- 
-
-
   return (
     <>
       <header className="relative isolate z-10 bg-white border-bottom-8 border-gray-400">
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5">
+              <img
+                className="h-10 w-auto"
+                src="/churchill.svg"
+                alt="Logo"
+               />
               <span className="sr-only">Churhill App</span>
-              <span className="sr-only">Your Company</span>
-              <Logo width={175} height={100} />
             </a>
           </div>
           <div className="flex lg:hidden">
