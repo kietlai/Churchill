@@ -391,7 +391,7 @@ export default function DashboardPage({
                           </Menu.Item>
                           
                         ))}
-                        <button onClick={ async () => await client.auth.signOut()} className='flex justify-start hover:bg-gray-50 block px-3 py-1 w-[100%] text-sm leading-6 text-gray-900'>Sign out</button>
+                        <button onClick={ async () => await client.auth.signOut()} className='flex justify-start hover:bg-gray-50 px-3 py-1 w-[100%] text-sm leading-6 text-gray-900'>Sign out</button>
                       </Menu.Items>
                     </Transition>
                   </Menu>
