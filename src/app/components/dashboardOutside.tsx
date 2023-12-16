@@ -33,8 +33,7 @@ const teams = [
   { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
 ]
 const userNavigation = [
-  { name: 'Your profile', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Your profile', href: '#' }
 ]
 
 function classNames(...classes: string[]) {
@@ -390,7 +389,9 @@ export default function DashboardPage({
                               </a>
                             )}
                           </Menu.Item>
+                          
                         ))}
+                        <button onClick={ async () => await client.auth.signOut()} className='flex justify-start hover:bg-gray-50 block px-3 py-1 w-[100%] text-sm leading-6 text-gray-900'>Sign out</button>
                       </Menu.Items>
                     </Transition>
                   </Menu>
