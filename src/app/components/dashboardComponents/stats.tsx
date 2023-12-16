@@ -1,4 +1,3 @@
-'use client'
 const stats = [
   { name: 'Revenue', value: '$4,504.00', change: '+4.75%', changeType: 'positive' },
   { name: 'Overdue invoices', value: '$1,787.00', change: '+3.02%', changeType: 'negative' },
