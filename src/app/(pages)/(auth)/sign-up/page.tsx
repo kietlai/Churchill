@@ -4,7 +4,6 @@ import GoogleLogo from '../../../images/PNGs/other/google-logo.png'
 import Image from 'next/image'
 
 import { createNewUser } from '@/app/actions'
-import PasswordChecker from './PasswordChecker'
 
 import Logo from '@/app/images/PNGs/Large Favicon Brand Color.png'
 
@@ -92,7 +91,6 @@ export default function SignUp(){
                             <input onChange={(e) => setConfPwd(e.target.value)} name="password" className="rounded-md basis-1/2 grow border-gray-300" type="password" minLength={8} placeholder="Confirm Password" required/>
                         </div>
                     </div>
-                    <PasswordChecker password={pwd} />
 
                     <span className='text-red-500 text-center'>{error}</span>
                     
