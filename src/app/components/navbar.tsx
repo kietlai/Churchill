@@ -20,6 +20,7 @@ import Link from 'next/link'
 import { UserResponse } from '@supabase/supabase-js'
 import { setOriginalNode } from 'typescript'
 import { cookies } from 'next/headers'
+import Image from 'next/image'
 import {z} from 'zod'
 
 const products = [
@@ -85,9 +86,12 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5">
+              <img
+                className="h-10 w-auto"
+                src="/churchill.svg"
+                alt="Logo"
+               />
               <span className="sr-only">Churhill App</span>
-              <span className="sr-only">Your Company</span>
-              <Logo width={175} height={100} />
             </a>
           </div>
           <div className="flex lg:hidden">

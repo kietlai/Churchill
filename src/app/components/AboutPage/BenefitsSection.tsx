@@ -1,10 +1,13 @@
 
 
-const benefits = {
+const benefits = [
   {
-    benefit: ""
-  },
-}
+    benefit: "",
+  }, 
+  {
+
+  }
+]
 
 
 export default function BenefitsSection() {
