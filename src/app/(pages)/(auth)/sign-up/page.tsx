@@ -6,14 +6,21 @@ import Image from 'next/image'
 import { createNewUser } from '@/app/actions'
 
 import Logo from '@/app/images/PNGs/Large Favicon Brand Color.png'
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 
 export default function SignUp(){
+    const client = createClientComponentClient({
+        supabaseUrl: process.env.supabaseUrl,
+        supabaseKey: process.env.SUPABASE_KEY
+    })
 
     const [pwd,setPwd] = useState<string>('')
     const [confPwd,setConfPwd] = useState<string>('');
     const [error,setError] = useState<string>('')
 
+
+    // check if passwords match
     useEffect(() => {
         if(confPwd.length > 0){
             setError(pwd == confPwd ? '' : 'Passwords must match')
@@ -22,6 +29,13 @@ export default function SignUp(){
         }
     },[pwd,confPwd])
 
+    const signInOAuth = async () => {
+        await client.auth.signInWithOAuth({
+            provider: "google",
+            
+        })
+        
+    }
     
     // symbol showing a field is required
     const Star = () => <span className="text-red-500">*</span>
@@ -105,7 +119,7 @@ export default function SignUp(){
                         <hr className="grow-[5]"/> <span className="grow text-center">or</span> <hr className="grow-[5]" />
                     </div>
                     <div className='my-4 flex justify-center items-center'>
-                        <button className="flex gap-1 border py-2 px-4 rounded-2xl font-medium hover:bg-gray-300" >
+                        <button onClick={signInOAuth} className="flex gap-1 border py-2 px-4 rounded-2xl font-medium hover:bg-gray-300" >
                             <Image src={GoogleLogo} alt="Google Logo" width='25' height='25' ></Image>
                             <span>Continue with Google</span>
                         </button>

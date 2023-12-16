@@ -13,13 +13,14 @@ import {
   LightBulbIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, RectangleGroupIcon } from '@heroicons/react/20/solid'
-import { Logo } from './Logo'
+import { Logo } from './logo'
 import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { UserResponse } from '@supabase/supabase-js'
 import { setOriginalNode } from 'typescript'
 import { cookies } from 'next/headers'
+import {z} from 'zod'
 
 const products = [
   {
@@ -55,6 +56,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
+
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -67,7 +69,14 @@ export default function Navbar() {
 
   const router = useRouter();
 
- 
+  useEffect(() => {
+    
+    client.auth.getUser().then(res => {
+      console.log(res.data.user)
+    })
+
+    
+  },[])
 
 
   return (

@@ -1,5 +1,5 @@
 'use client'
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
@@ -14,7 +14,8 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import {z} from 'zod'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -38,12 +39,48 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
+const userSchema = z.object({
+  firstName: z.string(),
+  lastName: z.string(),
+  birthDate: z.date(),
+  email: z.string(),
+  password: z.string().min(8),
+  phoneNumber: z.number().optional()
+})
+
+type Profile = Omit<z.infer<typeof userSchema>, 'password' >
+
 export default function DashboardPage({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [user,setUser] = useState<User | null>(null)
+  const [profile,setProfile] = useState<Profile>({
+    firstName: "",
+    lastName: "",
+    birthDate: new Date(),
+    email: ""
+  })
+
+  useEffect(() => {
+    client.auth.getUser()
+      .then(res => res.data.user)
+      .then(user => {
+
+        client.from('accounts').select().then(res => setProfile(res!.data![0]))
+
+
+      })
+
+  },[])
+
+  useEffect(() => {
+    console.log(profile)
+  },[profile])
+
+  
 
   const client = createClientComponentClient({
     supabaseUrl: process.env.supabaseUrl,
@@ -330,7 +367,7 @@ export default function DashboardPage({
                       />
                       <span className="hidden lg:flex lg:items-center">
                         <span className="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">
-                          Tom Cook
+                          {/* Tom Cook */} {profile.firstName + " " + profile.lastName}
                         </span>
                         <ChevronDownIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
                       </span>
