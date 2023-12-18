@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { Dialog } from "@headlessui/react"
 import { ChevronRightIcon } from "@heroicons/react/20/solid"
-import { Logo } from "./Logo"
+import { Logo } from "./logo"
 
 
 

@@ -22,6 +22,7 @@ import { setOriginalNode } from 'typescript'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
 import {z} from 'zod'
+import ProfileCard from './ProfileCard'
 
 const products = [
   {
@@ -62,6 +63,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const [isLoggedIn,setLoggedIn] = useState<boolean>(false);
+  const [user,setUser] = useState<any>({})
 
   const client = createClientComponentClient({
     supabaseUrl: process.env.supabaseUrl,
@@ -73,7 +75,12 @@ export default function Navbar() {
   useEffect(() => {
     
     client.auth.getUser().then(res => {
-      console.log(res.data.user)
+      setLoggedIn(Boolean(res.data.user?.aud))
+      
+      if(res.data.user?.aud){
+        client.from('accounts').select().then((res) => setUser(res.data![0]))
+      }
+
     })
 
     
@@ -166,7 +173,8 @@ export default function Navbar() {
             </a>
           </Popover.Group>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            {isLoggedIn ? <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> : <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+          {/* <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> */}
+            {isLoggedIn ? <ProfileCard profileSrc={''} userName={`${user.firstName} ${user.lastName}`} /> : <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>}
           </div>

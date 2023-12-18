@@ -1,8 +1,8 @@
 'use client'
 
-import Navbar from './components/Navbar'
+import Navbar from './components/navbar'
 import LogoClouds from './components/logoCloud'
-import FooterProductPage from './components/FooterProductPage'
+import FooterProductPage from './components/footerProductPage'
 import HeroSection from './components/heroSection'
 import Notif from './components/BannerNotif'
 import Testimonial from './components/TestimonalNew'
