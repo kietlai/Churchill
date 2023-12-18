@@ -12,6 +12,7 @@ import {
   HomeIcon,
   UsersIcon,
   XMarkIcon,
+  ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
@@ -22,16 +23,15 @@ import { useRouter } from 'next/navigation'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Team', href: '#', icon: UsersIcon, current: false },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+  { name: 'AI Scheduler', href: '#', icon: UsersIcon, current: false },
   { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
+  { name: 'Issues', href: '#', icon: ExclamationTriangleIcon, current: false },
   { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ]
 const teams = [
-  { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-  { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-  { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+  { id: 1, name: 'Swift App', href: '#', initial: 'S', current: false },
+  { id: 2, name: 'Android App', href: '#', initial: 'A', current: false },
+  { id: 3, name: 'Support Team', href: '#', initial: 'S', current: false },
 ]
 const userNavigation = [
   { name: 'Your profile', href: '#' }
@@ -234,7 +234,7 @@ export default function DashboardPage({
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
             <div className="flex h-16 shrink-0 items-center">
-              <Image height={50} src={CLogo} alt="Churchill Logo" />
+              <Image height={50} width={200} src="/churchill.svg" alt="Churchill Logo" />
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
