@@ -17,7 +17,7 @@ import { Logo } from './logo'
 import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { UserResponse } from '@supabase/supabase-js'
+import { UserIdentity, UserMetadata, UserResponse } from '@supabase/supabase-js'
 import { setOriginalNode } from 'typescript'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
@@ -64,6 +64,7 @@ export default function Navbar() {
 
   const [isLoggedIn,setLoggedIn] = useState<boolean>(false);
   const [user,setUser] = useState<any>({})
+  const [authMethod,setAuthMethod] = useState<string>('email')
 
   const client = createClientComponentClient({
     supabaseUrl: process.env.supabaseUrl,
@@ -77,14 +78,21 @@ export default function Navbar() {
     client.auth.getUser().then(res => {
       setLoggedIn(Boolean(res.data.user?.aud))
       
-      if(res.data.user?.aud){
+      
+      if(res.data.user != null && res.data.user != undefined){
+        if(Object.keys(res.data.user.user_metadata as object).length > 0){
+          setUser(res.data.user?.user_metadata)
+          setAuthMethod('google')
+        }
+      } else {
         client.from('accounts').select().then((res) => setUser(res.data![0]))
+        setAuthMethod('email')
       }
 
     })
-
     
   },[])
+
 
 
   return (
@@ -168,13 +176,13 @@ export default function Navbar() {
             <a href="/jobs/about" className="text-sm font-semibold leading-6 text-gray-900">
               About Us
             </a>
-            <a href="/jobs" className="text-sm font-semibold leading-6 text-gray-900">
+            <a href="/jobs/listing" className="text-sm font-semibold leading-6 text-gray-900">
               Careers
             </a>
           </Popover.Group>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {/* <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> */}
-            {isLoggedIn ? <ProfileCard profileSrc={''} userName={`${user.firstName} ${user.lastName}`} /> : <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
+            {isLoggedIn ? <ProfileCard profileSrc={authMethod == 'google' ? user.avatar_url : ''} authMethod={authMethod} userObj={user} /> : <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>}
           </div>

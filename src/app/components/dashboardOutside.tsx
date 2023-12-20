@@ -20,6 +20,10 @@ import CLogo from '@/app/images/PNGs/Large Favicon Brand Color.png'
 import Image from 'next/image'
 import {z} from 'zod'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+
+import defaultPfp  from '@/app/images/JPEGs/Small Favicon Black background.jpg'
+import { UserMetadata } from '@supabase/supabase-js'
 
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -50,7 +54,7 @@ const userSchema = z.object({
   phoneNumber: z.number().optional()
 })
 
-type Profile = Omit<z.infer<typeof userSchema>, 'password' >
+type Profile = Omit<z.infer<typeof userSchema>, 'password' > | any
 
 export default function DashboardPage({
   children, // will be a page or nested layout
@@ -66,6 +70,8 @@ export default function DashboardPage({
     email: ""
   })
 
+  const [authMethod,setAuthMethod] = useState<string>('email')
+
   const router = useRouter();
 
   useEffect(() => {
@@ -73,9 +79,15 @@ export default function DashboardPage({
       .then(res => res.data.user)
       .then(user => {
 
-        client.from('accounts').select().then(res => setProfile(res!.data![0]))
+        if(user?.user_metadata){
+          setProfile(user.user_metadata)
+          setAuthMethod('google')
+        } else {
+          client.from('accounts').select().then(res => setProfile(res!.data![0]))
+          setAuthMethod('email')
+        }
 
-
+        
       })
 
   },[])
@@ -209,8 +221,8 @@ export default function DashboardPage({
                           </ul>
                         </li>
                         <li className="mt-auto">
-                          <a
-                            href="#"
+                          <Link
+                            href='/dashboard/settings'
                             className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-sky-500"
                           >
                             <Cog6ToothIcon
@@ -218,7 +230,7 @@ export default function DashboardPage({
                               aria-hidden="true"
                             />
                             Settings
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </nav>
@@ -295,16 +307,16 @@ export default function DashboardPage({
                   </ul>
                 </li>
                 <li className="mt-auto">
-                  <a
-                    href="#"
-                    className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-sky-500"
-                  >
-                    <Cog6ToothIcon
-                      className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-sky-500"
-                      aria-hidden="true"
-                    />
-                    Settings
-                  </a>
+                <Link
+                  href='/dashboard/settings'
+                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-sky-500"
+                >
+                  <Cog6ToothIcon
+                    className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-sky-500"
+                    aria-hidden="true"
+                  />
+                  Settings
+                </Link>
                 </li>
               </ul>
             </nav>
@@ -356,14 +368,18 @@ export default function DashboardPage({
                   <Menu as="div" className="relative">
                     <Menu.Button className="-m-1.5 flex items-center p-1.5">
                       <span className="sr-only">Open user menu</span>
-                      <img
+                      <Image
+                        height={35}
+                        width={35}
                         className="h-8 w-8 rounded-full bg-gray-50"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                        src={authMethod == 'google' ? profile.avatar_url : defaultPfp}
+                        alt='profile pic'
                       />
                       <span className="hidden lg:flex lg:items-center">
                         <span className="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">
-                          {/* Tom Cook */} {profile.firstName + " " + profile.lastName}
+                          {/* Tom Cook */}
+                          {authMethod =='email' && profile.firstName + " " + profile.lastName}
+                          {authMethod == 'google' && profile.name}
                         </span>
                         <ChevronDownIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
                       </span>
