@@ -25,6 +25,7 @@ import Link from 'next/link'
 import defaultPfp  from '@/app/images/JPEGs/Small Favicon Black background.jpg'
 import { UserMetadata } from '@supabase/supabase-js'
 
+
 const navigation = [
   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
   { name: 'AI Scheduler', href: '#', icon: UsersIcon, current: false },

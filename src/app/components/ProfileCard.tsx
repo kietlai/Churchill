@@ -14,8 +14,8 @@ const ProfileCard = ({profileSrc, userObj, authMethod}: Props) => {console.log(a
 
 
     <Image className="rounded-[50%]" height={35} width={35} src={profileSrc ? profileSrc : defaultPfp} alt={`profile picture`} />
-    {authMethod == 'google' && <span>{userObj.full_name}</span>}
-    {authMethod == 'email' && <span>{`${userObj.firstName} ${userObj.lastName}`}</span>}
+    {authMethod == 'google' && <span className="font-medium">{userObj.full_name}</span>}
+    {authMethod == 'email' && <span className="font-medium">{`${userObj.firstName} ${userObj.lastName}`}</span>}
 
 </div> }
 

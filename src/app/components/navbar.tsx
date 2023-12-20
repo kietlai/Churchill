@@ -13,7 +13,6 @@ import {
   LightBulbIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, RectangleGroupIcon } from '@heroicons/react/20/solid'
-import { Logo } from './logo'
 import { createClientComponentClient, createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -193,7 +192,12 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
               <a href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Churchill App</span>
-                <Logo width={175} height={100}/>
+                <Image 
+                  src={"churchill.svg"} 
+                  width={175} 
+                  height={100}
+                  alt='company logo'
+                 />
               </a>
               <button
                 type="button"

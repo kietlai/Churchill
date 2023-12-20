@@ -1,15 +1,15 @@
 'use client'
 
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar'
 import LogoClouds from './components/LogoCloud'
-import FooterProductPage from './components/FooterProductPage'
-import HeroSection from './components/heroSection'
+import Footer from './components/FooterHome'
+import HeroSection from './components/HeroSection'
 import Notif from './components/BannerNotif'
 import Testimonial from './components/TestimonalNew'
 import Features from './components/Features'
 import CTAJoinUs from './components/JoinUs'
 
-export default async function ProductPresentation() {
+export default function ProductPresentation() {
 
   return (
     <>
@@ -19,7 +19,7 @@ export default async function ProductPresentation() {
       <Features />
       <Testimonial />
       <CTAJoinUs />
-      <FooterProductPage />
+      <Footer />
       <Notif />
     </>
   )
