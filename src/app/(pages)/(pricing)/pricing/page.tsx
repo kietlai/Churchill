@@ -5,7 +5,7 @@ import { Dialog } from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
 import { Logo } from '@/app/components/Logo'
-import Navbar from '@/app/components/Navbar'
+import Navbar from '@/app/components/Nav'
 import FooterProductPage from '@/app/components/FooterHome'
 import PricingPageBody from '@/app/components/Pricing'
 

@@ -7,7 +7,7 @@ import { Logo } from "./Logo"
 
 
 
-export default function HeroSection() {
+export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (

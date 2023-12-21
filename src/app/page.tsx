@@ -1,20 +1,21 @@
 'use client'
 
-import Navbar from './components/Navbar'
+
+import Navbar from './components/Nav'
 import LogoClouds from './components/LogoCloud'
 import Footer from './components/FooterHome'
-import HeroSection from './components/HeroSection'
 import Notif from './components/BannerNotif'
 import Testimonial from './components/TestimonalNew'
 import Features from './components/Features'
 import CTAJoinUs from './components/JoinUs'
+import Hero from './components/HeroSection'
 
 export default function ProductPresentation() {
 
   return (
     <>
       <Navbar />
-      <HeroSection />
+      <Hero />
       <LogoClouds /> 
       <Features />
       <Testimonial />
