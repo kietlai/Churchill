@@ -1,7 +1,0 @@
-- [] Finish componentization of the page
-- [] turn all svgs into components or upload it to supabase or something to just have it part of our domain
-- [] Finish the Details page for each position
-- [] Finish the applications
-- [] Finish the dashboard page in order to deploy
-- []
-- []
