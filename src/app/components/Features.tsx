@@ -25,7 +25,7 @@ export default function Features() {
     <div className="bg-white py-24 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-xl font-semibold leading-7 text-sky-600">Features</h2>
+          <h2 className="text-xl font-semibold leading-7 text-sky-500">Features</h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Effortlessly run your business with our tools
           </p>
@@ -38,13 +38,13 @@ export default function Features() {
             {features.map((feature) => (
               <div key={feature.name} className="flex flex-col">
                 <dt className="flex items-center gap-x-3 text-xl font-semibold leading-7 text-gray-900">
-                  <feature.icon className="h-5 w-5 flex-none text-sky-600" aria-hidden="true" />
+                  <feature.icon className="h-5 w-5 flex-none text-sky-500" aria-hidden="true" />
                   {feature.name}
                 </dt>
                 <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
                   <p className="flex-auto">{feature.description}</p>
                   <p className="mt-6">
-                    <a href={feature.href} className="text-sm font-semibold leading-6 text-sky-600">
+                    <a href={feature.href} className="text-sm font-semibold leading-6 text-sky-500">
                       Learn more <span aria-hidden="true">→</span>
                     </a>
                   </p>

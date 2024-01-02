@@ -72,7 +72,7 @@ export default function FormCards() {
     <>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl py-5">
-          <div className="divide-y ring-1 ring-gray-300 divide-gray-200 overflow-hidden rounded-lg bg-zinc-100 shadow">
+          <div className="divide-y ring-1 ring-gray-300 divide-gray-200 overflow-hidden rounded-lg bg-zinc-[50] shadow">
             <div className="px-4 py-5 sm:px-6">
               <h1 className="font-semibold text-3xl">Apply Now</h1>
               <h3 className="font-normal">Tell us why you are a good fit for Churchill.</h3>
@@ -287,7 +287,7 @@ export default function FormCards() {
                             <div className="mt-4 flex text-sm leading-6 text-gray-600">
                               <label
                                 htmlFor="file-upload"
-                                className="relative cursor-pointer rounded-md bg-white font-semibold text-sky-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-600 focus-within:ring-offset-2 hover:text-sky-500"
+                                className="relative cursor-pointer rounded-md bg-white font-semibold text-sky-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-600 focus-within:ring-offset-2 hover:text-sky-500"
                               >
                                 <span>Upload a file</span>
                                 <input id="file-upload" name="file-upload" type="file" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" className="sr-only" />
@@ -320,7 +320,7 @@ export default function FormCards() {
                                   id={ethnicity.id}
                                   name={ethnicity.title}
                                   type="checkbox"
-                                  className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                                  className="h-4 w-4 rounded border-gray-300 text-sky-500 focus:ring-sky-600"
                                 />
                               </div>
                               <div className="text-sm leading-6">
@@ -345,7 +345,7 @@ export default function FormCards() {
                                   id={identity.id}
                                   name={identity.title}
                                   type="checkbox"
-                                  className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                                  className="h-4 w-4 rounded border-gray-300 text-sky-500 focus:ring-sky-600"
                                 />
                               </div>
                               <div className="text-sm leading-6">
@@ -370,7 +370,7 @@ export default function FormCards() {
                                   id={orientation.id}
                                   name={orientation.title}
                                   type="checkbox"
-                                  className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                                  className="h-4 w-4 rounded border-gray-300 text-sky-500 focus:ring-sky-600"
                                 />
                               </div>
                               <div className="text-sm leading-6">
@@ -394,7 +394,7 @@ export default function FormCards() {
                                 id={disability.id}
                                 name={disability.title}
                                 type="radio"
-                                className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                                className="h-4 w-4 border-gray-300 text-sky-500 focus:ring-sky-600"
                               />
                               <label htmlFor={disability.id} className="block text-sm font-medium leading-6 text-gray-900">
                                 {disability.title}
@@ -415,7 +415,7 @@ export default function FormCards() {
                                 id={status.id}
                                 name={status.title}
                                 type="radio"
-                                className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                                className="h-4 w-4 border-gray-300 text-sky-500 focus:ring-sky-600"
                               />
                               <label htmlFor={status.id} className="block text-sm font-medium leading-6 text-gray-900">
                                 {status.title}
@@ -436,7 +436,7 @@ export default function FormCards() {
                                 id={place.id}
                                 name={place.title}
                                 type="radio"
-                                className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                                className="h-4 w-4 border-gray-300 text-sky-500 focus:ring-sky-600"
                               />
                               <label htmlFor={place.id} className="block text-sm font-medium leading-6 text-gray-900">
                                 {place.title}

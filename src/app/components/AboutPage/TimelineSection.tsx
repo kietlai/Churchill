@@ -38,7 +38,7 @@ export default function Timeline() {
             <div key={item.name}>
               <time
                 dateTime={item.dateTime}
-                className="flex items-center text-sm font-semibold leading-6 text-sky-600"
+                className="flex items-center text-sm font-semibold leading-6 text-sky-500"
               >
                 <svg viewBox="0 0 4 4" className="mr-4 h-1 w-1 flex-none" aria-hidden="true">
                   <circle cx={2} cy={2} r={2} fill="currentColor" />

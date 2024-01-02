@@ -48,7 +48,7 @@ export default function JobOpeningsPanel() {
               {jobs.length > 0 ? jobs.map((job: any) => <JobListing key={job.id} id={job.id} title={job.title} desc={job.description} salary = {job.salary} />) : <span className="flex justify-center grow text-gray-600">No Current Jobs</span>}
             </ul>
             <div className="mt-8 flex border-t border-gray-100 pt-8">
-              <a href="/jobs/listing" className="text-sm font-semibold leading-6 text-sky-600 hover:text-sky-500">
+              <a href="/jobs/listing" className="text-sm font-semibold leading-6 text-sky-500 hover:text-sky-500">
                 View all openings <span aria-hidden="true">&rarr;</span>
               </a>
             </div>
