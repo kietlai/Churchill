@@ -5,16 +5,15 @@ const navigation = {
   solutions: [
     { name: "Employee Management", href: "#" },
     { name: "AI Customer Interactions", href: "#" },
-    { name: "AI Adivsor", href: "#" },
+    { name: "AI Advisor", href: "#" },
     { name: "Insights", href: "#" },
   ],
   support: [
     { name: "Pricing", href: "/pricing" },
-    { name: "Guides", href: "#" },
   ],
   company: [
-    { name: "About", href: "/jobs/about" },
-    { name: "Jobs", href: "/jobs/listing" },
+    { name: "About", href: "/careers/about" },
+    { name: "Jobs", href: "/careers/listing" },
   ],
 
   social: [
