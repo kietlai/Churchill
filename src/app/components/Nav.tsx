@@ -31,15 +31,15 @@ const products = [
     icon: ChartPieIcon,
   },
   {
-    name: 'Communcation',
+    name: 'Communication',
     description: 'Speak directly to each other and create a work community',
     href: '/products/community-collaboration',
     icon: ChatBubbleBottomCenterIcon,
   },
   { 
-    name: 'AI Adivsor', 
+    name: 'AI Advisor', 
     description: 'Allow your HR work to be done faster and more streamlined', 
-    href: '/products/ai-adivsor', 
+    href: '/products/ai-advisor', 
     icon: LightBulbIcon },
   {
     name: 'AI Customer Interactions',
@@ -100,12 +100,14 @@ export default function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5">
-              <img
-                className="h-10 w-auto"
-                src="/churchill.svg"
+              <Image
+                className="h-12 w-auto"
+                src="/icon.svg"
                 alt="Logo"
+                width={75}
+                height={75}
                />
-              <span className="sr-only">Churhill App</span>
+              <span className="sr-only">Churchill App</span>
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -193,10 +195,11 @@ export default function Navbar() {
               <a href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Churchill App</span>
                 <Image 
-                  src={"churchill.svg"} 
-                  width={175} 
-                  height={100}
+                  src={"icon.svg"} 
+                  width={75} 
+                  height={75}
                   alt='company logo'
+                  className="h-12 w-auto"
                  />
               </a>
               <button

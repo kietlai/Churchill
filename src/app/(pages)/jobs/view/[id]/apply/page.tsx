@@ -1,6 +1,5 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
-import Form from "./Form"
 import FormCards from "./FormCard"
 
 interface Job {
@@ -11,6 +10,9 @@ interface Job {
     isOpen: boolean,
     type: 'remote' | 'in-person'
 }
+
+
+
 
 export default async function JobApplication({ params }: { params: { id: string} }){
 
@@ -30,6 +32,7 @@ export default async function JobApplication({ params }: { params: { id: string}
         <>
             
             <p>{job.title} Application here</p>
+
             <FormCards />
 
 

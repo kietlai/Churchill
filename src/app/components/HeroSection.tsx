@@ -39,7 +39,7 @@ export default function Hero() {
           <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pb-40">
             <Logo width={500} height={150} />
             <div className="mt-24 sm:mt-32 lg:mt-16">
-              <a href="/careers" className="inline-flex space-x-6">
+              <a href="/careers" className="inline-flex space-x-3 md:space-x-6">
                 <span className="rounded-full bg-sky-500/10 px-3 py-1 text-sm font-semibold leading-6 text-sky-500 ring-1 ring-inset ring-sky-500/10">
                   What&apos;s new
                 </span>
@@ -72,7 +72,7 @@ export default function Hero() {
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
             <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
               <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                <img
+                <Image
                   src="/unfinished app preview.jpeg"
                   alt="App screenshot"
                   width={2432}
