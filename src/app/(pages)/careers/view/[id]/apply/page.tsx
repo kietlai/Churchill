@@ -10,9 +10,9 @@ interface Job {
     isOpen: boolean,
     type: 'remote' | 'in-person'
     teams: string,
-    
-
 }
+
+
 
 
 
@@ -38,7 +38,6 @@ export default async function JobApplication({ params }: { params: { id: string}
         <>
             
             <p>{job.title} Application here</p>
-
             <FormCards />
 
 
