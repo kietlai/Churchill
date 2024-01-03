@@ -10,10 +10,7 @@ interface Job {
     isOpen: boolean,
     type: 'remote' | 'in-person'
     teams: string,
-    [benefits:number]: string,
-    [aboutYou:number]: string,
-    [bonus:number]: string,
-    [responsibilities:number]: string,
+    
 
 }
 
@@ -28,6 +25,10 @@ export default async function JobApplication({ params }: { params: { id: string}
         supabaseKey: process.env.SUPABASE_KEY,
         supabaseUrl: process.env.supabaseUrl
     })
+
+    const infoRes: any = await client.from('jobs').select('info').eq('id',params.id);
+    const jobInfo = infoRes[0]; // reqs etc
+
 
     const res: any = await client.from('jobs').select().eq('id',params.id)
     const jobData = res.data[0]
