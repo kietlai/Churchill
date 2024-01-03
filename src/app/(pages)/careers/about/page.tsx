@@ -23,15 +23,12 @@ export default function AboutUs() {
       <main className="isolate bg-white">
         {/* Hero section */}
         <HeroSection />
-
         {/* Timeline section */}
         <Timeline />
-
-        {/* Benefits section */}
-        <BenefitsSection />
         {/* Our People section */}
         <People />
-
+        {/* Benefits section */}
+        <BenefitsSection />
         {/* Job Openings preview section */}
         <JobOpeningsPanel />
       </main>

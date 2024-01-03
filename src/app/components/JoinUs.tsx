@@ -54,7 +54,7 @@ export default function CTAJoinUs() {
           aria-hidden="true"
         >
           <div
-            className="aspect-[1318/752] w-[82.375rem] flex-none bg-gradient-to-r from-sky-400 to-emerald-600 opacity-25"
+            className="aspect-[1318/752] w-[82.375rem] flex-none bg-gradient-to-r from-sky-400 to-blue-400 opacity-25"
             style={{
               clipPath:
                 'polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)',

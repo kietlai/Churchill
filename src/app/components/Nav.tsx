@@ -174,10 +174,10 @@ export default function Navbar() {
             <a href="/pricing" className="text-sm font-semibold leading-6 text-gray-900">
               Pricing
             </a>
-            <a href="/jobs/about" className="text-sm font-semibold leading-6 text-gray-900">
+            <a href="/careers/about" className="text-sm font-semibold leading-6 text-gray-900">
               About Us
             </a>
-            <a href="/jobs/listing" className="text-sm font-semibold leading-6 text-gray-900">
+            <a href="/careers/listing" className="text-sm font-semibold leading-6 text-gray-900">
               Careers
             </a>
           </Popover.Group>
