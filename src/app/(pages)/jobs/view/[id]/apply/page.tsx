@@ -1,6 +1,8 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 
+import FileUpload from "@/app/components/FileUpload"
+
 interface Job {
     id: string,
     title: string,
@@ -27,8 +29,9 @@ export default async function JobApplication({ params }: { params: { id: string}
     return (
         <>
         
-            <p>{job.title} Application here</p>    
-        
+            <p>{job.title} Application here</p>
+
+            <FileUpload/>
         </>
     )
 }
