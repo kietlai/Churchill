@@ -31,7 +31,7 @@ export default async function JobApplication({ params }: { params: { id: string}
 
     const res: any = await client.from('jobs').select().eq('id',params.id)
     const jobData = res.data[0]
-    //TODO: Need to add in the types for the arrays i dunno how to.
+    //TODO: Need to add in the types for the arrays i dunno how to do this
     const job: Job = {id: params.id, title: jobData.title, desc: jobData.description, salary: jobData.salary, isOpen: jobData.isOpen, type: jobData.type, teams: jobData.teams,}
     return (
         <>
