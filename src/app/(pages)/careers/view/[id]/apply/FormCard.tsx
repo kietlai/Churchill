@@ -1,5 +1,6 @@
-
+'use client'
 import { PhotoIcon, UserCircleIcon, DocumentArrowUpIcon } from '@heroicons/react/24/solid'
+import { Reducer, use, useReducer, useState } from 'react'
 
 //Where you learned about us at
 const places = [
@@ -68,6 +69,28 @@ const socials = [
 
 
 export default function FormCards() {
+
+  const [firstName,setFName] = useState('')
+  const [lastName,setLName] = useState('')
+  const [email,setEmail] = useState('')
+  const [phoneNumber,setPhoneNumber] = useState('')
+  const [address,setAddress] = useState('')
+  const [city,setCity] = useState('')
+  const [country,setCountry] = useState('')
+  const [state,setState] = useState('')
+  const [zipCode,setCode] = useState<number>(0)
+
+  // socials here
+
+  //
+
+  type reduceState = {checked: boolean, ethnic: string}
+  const [aboutMeText,setAboutMe] = useState('')
+  const [ethicBg,updateEthnics] = useReducer<Reducer<() => void, () => void>>(() => {
+
+  },[])
+  
+  
   return(
     <>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -94,6 +117,8 @@ export default function FormCards() {
                         </label>
                         <div className="mt-2">
                           <input
+                            required
+                            onChange={(e) => setFName(e.target.value)}
                             type="text"
                             name="first-name"
                             id="first-name"
@@ -109,6 +134,8 @@ export default function FormCards() {
                         </label>
                         <div className="mt-2">
                           <input
+                          required
+                          onChange={(e) => setLName(e.target.value)}
                             type="text"
                             name="last-name"
                             id="last-name"
@@ -124,6 +151,8 @@ export default function FormCards() {
                         </label>
                         <div className="mt-2">
                           <input
+                          required
+                            onChange={(e) => setEmail(e.target.value)}
                             id="email"
                             name="email"
                             type="email"
@@ -142,6 +171,7 @@ export default function FormCards() {
                               Country
                             </label>
                             <select
+                              required
                               id="country"
                               name="country"
                               autoComplete="country"
@@ -151,6 +181,8 @@ export default function FormCards() {
                             </select>
                           </div>
                           <input
+                          required
+                            onChange={(e) => setPhoneNumber(e.target.value)}
                             type="text"
                             name="phone-number"
                             id="phone-number"
@@ -166,6 +198,7 @@ export default function FormCards() {
                         </label>
                         <div className="mt-2">
                           <select
+                            onChange={(e) => setCountry(e.target.value)}
                             id="country"
                             name="country"
                             autoComplete="country-name"
@@ -266,6 +299,7 @@ export default function FormCards() {
                         <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
                         <div className="mt-2">
                           <textarea
+                            onChange={(e) => setAboutMe(e.target.value)}
                             id="about"
                             name="about"
                             rows={3}
@@ -315,7 +349,8 @@ export default function FormCards() {
                           {ethnicities.map((ethnicity) => (
                             <div className="relative flex gap-x-3" key={ethnicity.id}>{/* the singular of each is equal to 1 item within the list */}
                               <div className="flex h-6 items-center">
-                                <input
+                                <input 
+                                  onChange={(e) => updateEthnics({checked: e.target.checked, ethnic: ethnicity.id})}
                                   id={ethnicity.id}
                                   name={ethnicity.title}
                                   type="checkbox"
