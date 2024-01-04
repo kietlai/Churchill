@@ -1,23 +1,20 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import FormCards from "./FormCard"
-
+import Desc from "./JobDesc"
 interface Job {
     id: string,
     title: string,
     desc: string,
-    salary: number,
+    salary: string,
     isOpen: boolean,
-    type: 'remote' | 'in-person'
+    type: 'Remote' | 'In-person'
     teams: string,
+    times: string,
 }
 
 
-
-
-
-
-export default async function JobApplication({ params }: { params: { id: string} }){
+export default async function JobApplication({ params }: { params: { id: string } }){
 
     const client = createServerComponentClient({
         cookies: () => cookies()
@@ -32,13 +29,17 @@ export default async function JobApplication({ params }: { params: { id: string}
 
     const res: any = await client.from('jobs').select().eq('id',params.id)
     const jobData = res.data[0]
+
+    console.log(jobData);
     //TODO: Need to add in the types for the arrays i dunno how to do this
-    const job: Job = {id: params.id, title: jobData.title, desc: jobData.description, salary: jobData.salary, isOpen: jobData.isOpen, type: jobData.type, teams: jobData.teams,}
+    const job: Job = {id: params.id, title: jobData.title, desc: jobData.description, salary: jobData.salary, isOpen: jobData.isOpen, type: jobData.type, teams: jobData.teams, times: jobData.time}
     return (
         <>
-            
-            <p>{job.title} Application here</p>
-            <FormCards />
+            <Desc key={job.id} id={job.id} title={job.title} desc={job.desc} salary={job.salary} teams={job.teams} location={job.type} times={job.times}/>
+            <section id="apply">
+                <FormCards />
+            </section>
+           
 
 
         

@@ -130,12 +130,14 @@ export default function Navbar() {
             <a href="/careers/listing" className="text-sm font-semibold leading-6 text-gray-900">
               Careers
             </a>
+            <a href="/fbla" className="text-sm font-semibold leading-6 text-gray-900">
+              FBLA
+            </a>
+            
           </Popover.Group>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {/* <button onClick={async () => {await client.auth.signOut(); router.refresh()}} >Log out</button> */}
-            {isLoggedIn ? <ProfileCard profileSrc={authMethod == 'google' ? user.avatar_url : ''} authMethod={authMethod} userObj={user} /> : <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </Link>}
+          
           </div>
         </nav>
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -162,7 +164,7 @@ export default function Navbar() {
               </button>
             </div>
             <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
+              <div className="-my-6 divide-y divide-grayabsolute-500/10">
                 <div className="space-y-2 py-6">
                   <a
                     href="/pricing"
@@ -171,24 +173,22 @@ export default function Navbar() {
                     Pricing
                   </a>
                   <a
-                    href="/jobs/about"
+                    href="/careers/about"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     About Us
                   </a>
                   <a
-                    href="/jobs/listing"
+                    href="/careers/listing"
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Careers
                   </a>
-                </div>
-                <div className="py-6">
                   <a
-                    href="/login"
+                    href="/fbla"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
-                    Log in
+                    FBLA
                   </a>
                 </div>
               </div>

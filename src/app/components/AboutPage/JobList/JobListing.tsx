@@ -18,7 +18,7 @@ export default function JobListing({ id, title, desc, location, salary }: Props)
         <dl className="relative flex flex-wrap gap-x-3">
           <dt className="sr-only">Role</dt>
           <dd className="w-full flex-none text-lg font-semibold tracking-tight text-gray-900">
-            <Link href={`/jobs/view/${id}`}>
+            <Link href={`/careers/view/${id}`}>
               {title}
               <span className="absolute inset-0" aria-hidden="true" />
             </Link>

@@ -94,7 +94,7 @@ export default function FormCards() {
   return(
     <>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl py-5">
+        <div className="mx-auto max-w-6xl py-5">
           <div className="divide-y ring-1 ring-gray-300 divide-gray-200 overflow-hidden rounded-lg bg-zinc-[50] shadow">
             <div className="px-4 py-5 sm:px-6">
               <h1 className="font-semibold text-3xl">Apply Now</h1>

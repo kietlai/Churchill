@@ -273,19 +273,17 @@ export default function BlogPost() {
           <ul role="list" className="grid mt-16 gap-x-8 gap-y-12 sm:gap-y-16 xl:col-span-2">
             {techs.map((tech) => (
               <div className="flex text-black" key={tech.name}>
-                
-                  <div className="mr-4 flex-shrink-0 self-center">
-                    <a href={tech.link} target="_blank">
-                      <tech.icon className="h-16 w-16"/>
-                    </a>
-                  </div>
-                  <div>
-                    <a href={tech.link} target="_blank">
-                      <h4 className="text-lg font-bold">{tech.name}</h4>
-                      <p className="mt-1 text-gray-600">{tech.desc}</p>
-                    </a>
-                  </div>
-              
+                <div className="mr-4 flex-shrink-0 self-center">
+                  <a href={tech.link} target="_blank">
+                    <tech.icon className="h-16 w-16"/>
+                  </a>
+                </div>
+                <div>
+                  <a href={tech.link} target="_blank">
+                    <h4 className="text-lg font-bold">{tech.name}</h4>
+                    <p className="mt-1 text-gray-600">{tech.desc}</p>
+                  </a>
+                </div>
               </div>
             ))}
           </ul>
@@ -308,17 +306,13 @@ export default function BlogPost() {
             App screen shot of home page. 
           </figcaption>
         </figure>
-        <div className="mt-16 max-w-2xl">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">Everything you need to get up and running</h2>
+        <div className="mt-16 max-w-2xl text-lg">
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900">About this project.</h2>
           <p className="mt-6">
-            Purus morbi dignissim senectus mattis adipiscing. Amet, massa quam varius orci dapibus volutpat cras. In
-            amet eu ridiculus leo sodales cursus tristique. Tincidunt sed tempus ut viverra ridiculus non molestie.
-            Gravida quis fringilla amet eget dui tempor dignissim. Facilisis auctor venenatis varius nunc, congue erat
-            ac. Cras fermentum convallis quam.
+            Churchill was always ment to be a framework from which other SAAS apps. This project was our playground to test out new concepts, ideas and implementations of this technology. From this solid framework we plan to expand it into bigger more useful applications, more specifically in the student space.  
           </p>
           <p className="mt-8">
-            Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet vitae
-            sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque erat velit.
+            What might this project be? This project will also involve AI but will have it actually implemented. It is designed to help students do there absolute best in school and perform at the highest level.
           </p>
         </div>
       </div>
