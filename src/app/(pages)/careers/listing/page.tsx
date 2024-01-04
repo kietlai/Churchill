@@ -6,7 +6,6 @@ import SearchIcon from './SearchIcon'
 import Link from 'next/link'
 
 import JobPanel from './JobPanel'
-import JobPanel2 from './JobPanel2'
 import JobOpeningsPanel from '@/app/components/AboutPage/JobOpenings'
 import JobListing from '@/app/components/AboutPage/JobList/JobListing'
 

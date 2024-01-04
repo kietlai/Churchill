@@ -3,6 +3,6 @@ import Private2 from "./Page2"
 
 export default function Private() {
   return(
-    <Private2 />
+    <Private1 />
   )
 }

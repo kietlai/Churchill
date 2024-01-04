@@ -35,7 +35,7 @@ const JobPanel = ({ id,title }: Props) => {
 
     function handleClick(){
         if(mouseOverBtn) router.push(`/careers/view/${id}/apply`)
-        else router.push(`/jobs/view/${id}`)
+        else router.push(`/careers/view/${id}`)
     }
 
     return (
