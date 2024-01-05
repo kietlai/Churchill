@@ -124,8 +124,8 @@ export default function Desc({ id, title, desc, longDesc, location, salary, team
                     At Churchill we look for hard working, innovative, collaborative, and passionate people. At Churchill we offer extensive remote options but we still work in teams. The community that we&apos;ve fostered at Churchill is designed to empower you to achieve the best version of yourself. We are a team of proactive problem solvers who believe in the future of AI as something that can help society. 
                   </p>
 
-                  <h2 className="mt-4 pb-4 mb-12 text-2xl font-bold tracking-tight text-gray-900">About This Role:</h2>
-                  <p>{longDesc}</p>
+                  <h2 className="mt-4 pb-4 text-2xl font-bold tracking-tight text-gray-900">About This Role:</h2>
+                  <p className="mb-12">{longDesc}</p>
 
 
                   {/* Lists */}
