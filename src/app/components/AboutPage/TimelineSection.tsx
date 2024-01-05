@@ -23,7 +23,7 @@ const timeline = [
   {
     name: 'PLANNED Beta testing',
     description:
-      'Released first round of Beta Testing to Origin Wireless.',
+      'Released first round of Beta Testing to the public.',
     date: 'Feb 2024',
     dateTime: '2024-02',
   },
