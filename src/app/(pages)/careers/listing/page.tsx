@@ -8,6 +8,7 @@ import Link from 'next/link'
 import JobPanel from './JobPanel'
 import JobOpeningsPanel from '@/app/components/AboutPage/JobOpenings'
 import JobListing from '@/app/components/AboutPage/JobList/JobListing'
+import BenefitsSection from '@/app/components/AboutPage/BenefitsSection'
 
 interface Job {
   title: string
@@ -33,11 +34,11 @@ export default function JobOpenings() {
   return (
     <>
       
-      <section id="reasons">
-      
+      <section id="reasons" className="pb-12">
+      <BenefitsSection />
       </section>
 
-      <section id="jobs">
+      <section id="jobs" className="bg-white pt-12">
         <header className='flex flex-col justify-center items-center py-4 gap-2'>
           <span className='text-black font-medium text-4xl'>Open Positions</span>
           <div className="flex justify-center items-center w-[35vw] min-w-[300px] border px-5 focus-within:border-blue-500 rounded-md">

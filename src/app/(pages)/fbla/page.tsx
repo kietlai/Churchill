@@ -11,7 +11,6 @@ export default function Blog() {
       <BlogPost />
       <Sign />
       <FooterProductPage />
-
     </>
   )
 }

@@ -1,6 +1,26 @@
 {
-  "benefits": [],
-  "responsibilities": [],
-  "bonus": [],
-  "aboutYou": []
+  "bonus": [
+    "Experience with motion graphics and animation.",
+    "Familiarity with accessibility standards and practices.",
+    "Knowledge of front-end development technologies (HTML, CSS, JavaScript)."
+  ],
+  "aboutYou": [
+    "A great creative with an innovative mindset",
+    "Strong problem solver",
+    "user-centric approach to design",
+    "Continuous learner with a passion for staying updated on the newest design trends.",
+    "A great communicator"
+  ],
+  "responsibilities": [
+    "Collaborate with product management and engineering teams to define and implement innovative solutions for the product direction, visuals, and experience.",
+    "Create wireframes, user flows, and prototypes to effectively communicate interaction and design ideas.",
+    "Conduct user research and evaluate user feedback to enhance user experience.",
+    "Stay updated on industry trends, design best practices, and emerging technologies."
+  ],
+  "reqs": [
+    "Excellent communication skills and the ability to present and defend design decisions.",
+    "Strong portfolio demonstrating a range of design projects.",
+    "Proficiency in design and prototyping tools (e.g., Figma, Sketch, Adobe Creative Suite).",
+    "Understanding of interaction design principles and responsive design."
+  ]
 }
