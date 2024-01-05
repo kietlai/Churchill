@@ -3,10 +3,10 @@ import { Logo } from "./Logo"
 
 const navigation = {
   solutions: [
-    { name: "Employee Management", href: "#" },
-    { name: "AI Customer Interactions", href: "#" },
-    { name: "AI Advisor", href: "#" },
-    { name: "Insights", href: "#" },
+    { name: "Employee Management", href: "/private" },
+    { name: "AI Customer Interactions", href: "/private" },
+    { name: "AI Advisor", href: "/private" },
+    { name: "Insights", href: "/private" },
   ],
   support: [
     { name: "Pricing", href: "/pricing" },

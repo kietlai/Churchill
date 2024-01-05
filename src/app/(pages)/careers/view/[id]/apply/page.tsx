@@ -46,9 +46,6 @@ export default async function JobApplication({ params }: { params: { id: string 
             <section id="apply">
                 <FormCards />
             </section>
-           
-
-
         
         </>
     )
