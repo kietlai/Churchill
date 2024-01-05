@@ -16,7 +16,19 @@ const nextConfig = {
                 hostname: 'images.unsplash.com'
             }
         ]
-    }
+    },
+    
+    async redirects() {
+        return [
+            {
+                source: '/careers/view/:id',
+                destination: '/careers/view/:id/apply',
+                permanent: true,
+            },
+        ]
+    },
 }
 
 module.exports = nextConfig
+
+

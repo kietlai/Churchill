@@ -2,6 +2,7 @@ import { createClientComponentClient, createServerComponentClient } from "@supab
 import { cookies } from "next/headers"
 import { notFound } from "next/navigation"
 import Result from "./Result"
+import Link from "next/link"
 
 export default async function JobView({ params }: { params: { id: string} }){
     const client = createServerComponentClient({
@@ -21,9 +22,7 @@ export default async function JobView({ params }: { params: { id: string} }){
 
     return (
         <>
-        
-            <Result job={job} />
-        
+                
         </>
     )
 

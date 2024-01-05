@@ -1,6 +1,6 @@
 'use client'
 import { PhotoIcon, UserCircleIcon, DocumentArrowUpIcon } from '@heroicons/react/24/solid'
-import { Reducer, use, useReducer, useState } from 'react'
+import { Reducer, use, useEffect, useReducer, useState } from 'react'
 
 //Where you learned about us at
 const places = [
@@ -74,22 +74,56 @@ export default function FormCards() {
   const [lastName,setLName] = useState('')
   const [email,setEmail] = useState('')
   const [phoneNumber,setPhoneNumber] = useState('')
-  const [address,setAddress] = useState('')
-  const [city,setCity] = useState('')
-  const [country,setCountry] = useState('')
   const [state,setState] = useState('')
-  const [zipCode,setCode] = useState<number>(0)
+
 
   // socials here
-
+  const [selectedSocials,setSocials] = useState({
+    linkedIn: '',
+    github: '',
+    twitter: '',
+    instagram: '',
+    tiktok: ''
+  })
   //
 
-  type reduceState = {checked: boolean, ethnic: string}
   const [aboutMeText,setAboutMe] = useState('')
-  const [ethicBg,updateEthnics] = useReducer<Reducer<() => void, () => void>>(() => {
+  const [ethnics,setEtnics] = useState<string[]>([])
+  const [genderIds,setGenderIds] = useState<string[]>([])
+  const [orientationList,setOrientations] = useState<string[]>([])
 
-  },[])
+  const [hasDisability,setHasDisability] = useState<boolean>(false)
+
+  // updates
+  const updateEthnics = (checked: boolean, ethnic: string) => {
+    if(checked){
+      setEtnics(prev => [...prev,ethnic])
+    } else {
+      setEtnics(prev => prev.filter(e => e != ethnic))
+    }
+  }
+
+  const updateGenderIds = (checked: boolean, gender: string) => {
+    if(checked){
+      setGenderIds(prev => [...prev,gender])
+    } else {
+      setGenderIds(prev => prev.filter(e => e != gender))
+    }
+  }
   
+  const updateOrientations = (checked: boolean, orientation: string) => {
+    if(checked){
+      setOrientations(prev => [...prev,orientation])
+    } else {
+      setOrientations(prev => prev.filter(e => e != orientation))
+    }
+  }
+  
+
+
+  useEffect(() => {
+    console.log(ethnics)
+  },[ethnics])
   
   return(
     <>
@@ -197,10 +231,10 @@ export default function FormCards() {
                         </label>
                         <div className="mt-2">
                           <select
-                            onChange={(e) => setCountry(e.target.value)}
-                            id="country"
-                            name="country"
-                            autoComplete="country-name"
+                            onChange={(e) => setState(e.target.value)}
+                            id="state"
+                            name="state"
+                            autoComplete="state-name"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:max-w-xs sm:text-sm sm:leading-6"
                           >
                             <option>California</option>
@@ -259,7 +293,7 @@ export default function FormCards() {
 
                       <div className="col-span-full">
                         <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-gray-900">
-                          Cover photo
+                          Resume Upload
                         </label>
                         <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                           <div className="text-center">
@@ -297,7 +331,7 @@ export default function FormCards() {
                             <div className="relative flex gap-x-3" key={ethnicity.id}>{/* the singular of each is equal to 1 item within the list */}
                               <div className="flex h-6 items-center">
                                 <input 
-                                  onChange={(e) => updateEthnics({checked: e.target.checked, ethnic: ethnicity.id})}
+                                  onChange={(e) => updateEthnics(e.target.checked,ethnicity.id)}
                                   id={ethnicity.id}
                                   name={ethnicity.title}
                                   type="checkbox"
@@ -323,8 +357,9 @@ export default function FormCards() {
                             <div className="relative flex gap-x-3" key={identity.id}>{/* the singular of each is equal to 1 item within the list */}
                               <div className="flex h-6 items-center">
                                 <input
+                                  onChange={(e) => updateGenderIds(e.target.checked,identity.id)}
                                   id={identity.id}
-                                  name={identity.title}
+                                  name="gender-identity"
                                   type="checkbox"
                                   className="h-4 w-4 rounded border-gray-300 text-sky-500 focus:ring-sky-600"
                                 />
@@ -348,8 +383,9 @@ export default function FormCards() {
                             <div className="relative flex gap-x-3" key={orientation.id}>{/* the singular of each is equal to 1 item within the list */}
                               <div className="flex h-6 items-center">
                                 <input
+                                onChange={(e) => updateOrientations(e.target.checked, orientation.id)}
                                   id={orientation.id}
-                                  name={orientation.title}
+                                  name="orientation"
                                   type="checkbox"
                                   className="h-4 w-4 rounded border-gray-300 text-sky-500 focus:ring-sky-600"
                                 />
@@ -372,8 +408,9 @@ export default function FormCards() {
                           {disabilities.map((disability) => (
                             <div className="flex items-center gap-x-3" key={disability.id}>{/* the singular of each is equal to 1 item within the list */}
                               <input
+                                // onChange={set}
                                 id={disability.id}
-                                name={disability.title}
+                                name='disability'
                                 type="radio"
                                 className="h-4 w-4 border-gray-300 text-sky-500 focus:ring-sky-600"
                               />
@@ -394,7 +431,7 @@ export default function FormCards() {
                             <div className="flex items-center gap-x-3" key={status.id}>{/* the singular of each is equal to 1 item within the list */}
                               <input
                                 id={status.id}
-                                name={status.title}
+                                name="veterans-status"
                                 type="radio"
                                 className="h-4 w-4 border-gray-300 text-sky-500 focus:ring-sky-600"
                               />
@@ -415,7 +452,7 @@ export default function FormCards() {
                             <div className="flex items-center gap-x-3" key={place.id}>{/* the singular of each is equal to 1 item within the list */}
                               <input
                                 id={place.id}
-                                name={place.title}
+                                name="where-did-you-hear-about-us"
                                 type="radio"
                                 className="h-4 w-4 border-gray-300 text-sky-500 focus:ring-sky-600"
                               />
