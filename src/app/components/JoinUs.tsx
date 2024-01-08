@@ -42,7 +42,7 @@ export default function CTAJoinUs() {
                 ))}
               </ul>
               <div className="mt-10 flex">
-                <a href="/jobs/listing" className="text-sm font-semibold leading-6 text-sky-500">
+                <a href="/careers/listing" className="text-sm font-semibold leading-6 text-sky-500">
                   See our job postings <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
