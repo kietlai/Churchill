@@ -1,6 +1,7 @@
 'use client'
 import { PhotoIcon, UserCircleIcon, DocumentArrowUpIcon } from '@heroicons/react/24/solid'
-import { Reducer, use, useEffect, useReducer, useState } from 'react'
+import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { Reducer, use, useEffect, useReducer, useRef, useState } from 'react'
 import { NullLiteral } from 'typescript'
 
 //Where you learned about us at
@@ -71,6 +72,13 @@ const socials = [
 
 export default function FormCards() {
 
+  const client = createClientComponentClient({
+    supabaseUrl: process.env.supabaseUrl,
+    supabaseKey: process.env.SUPABASE_KEY
+  })
+
+  const fileInput = useRef<HTMLInputElement>(null)
+
   const [firstName,setFName] = useState('')
   const [lastName,setLName] = useState('')
   const [email,setEmail] = useState('')
@@ -98,7 +106,37 @@ export default function FormCards() {
   const [isVeteran,setIsVeteran] = useState<boolean | null>(null)
   const [source,setSource] = useState<string>('')
 
-  // updates
+
+  const [user,setUser] = useState<User | null>();
+  useEffect(() => {
+    client.auth.getUser().then(res => setUser(res.data.user))
+  })
+  // helper functions
+  function handleFile(){
+
+    if(fileInput.current?.files){
+      
+      const file = fileInput.current.files[0]
+
+      client.storage.from('resumes').upload(`resume_${file.name}`,file)
+        .then(data => console.log(data))
+        .then(() => {
+          const resumeUrl = client.storage.from('resumes').createSignedUrl(`resume_${file.name}`,100,{download: false})
+          .then(u => {
+
+            // upload file to resume_docs table
+            client.from('resume_docs').insert({
+              author_id: user?.id,
+              doc_url: u.data?.signedUrl
+            })
+        })
+      })
+       
+
+        
+    
+    }
+  }
   const updateEthnics = (checked: boolean, ethnic: string) => {
     if(checked){
       setEtnics(prev => [...prev,ethnic])
@@ -148,7 +186,7 @@ export default function FormCards() {
     }
 
     console.dir(userForm)
-  },)
+  },[firstName,lastName,email,phoneNumber,selectedSocials,state,aboutMeText,ethnics,genderIds,orientationList,hasDisability,isVeteran,source])
   
   return(
     <>
@@ -335,8 +373,8 @@ export default function FormCards() {
                                 htmlFor="file-upload"
                                 className="relative cursor-pointer rounded-md bg-white font-semibold text-sky-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-600 focus-within:ring-offset-2 hover:text-sky-500"
                               >
-                                <span>Upload a file</span>
-                                <input id="file-upload" name="file-upload" type="file" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" className="sr-only" />
+                                <span>Upload a Resume</span>
+                                <input onChange={() => handleFile()} ref={fileInput} id="file-upload" name="file-upload" type="file" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" className="sr-only" />
                               </label>
                               <p className="pl-1">or drag and drop</p>
                             </div>
