@@ -1,21 +1,22 @@
 'use client'
 import { PhotoIcon, UserCircleIcon, DocumentArrowUpIcon } from '@heroicons/react/24/solid'
 import { Reducer, use, useEffect, useReducer, useState } from 'react'
+import { NullLiteral } from 'typescript'
 
 //Where you learned about us at
 const places = [
-  { id: "email", title: "Email" },
-  { id: "instagram", title: "Instagram" },
-  { id: "network", title: "Your Network" },
-  { id: "other", title: "Other" },
+  { id: "email-p", title: "Email" },
+  { id: "instagram-p", title: "Instagram" },
+  { id: "network-p", title: "Your Network" },
+  { id: "other-p", title: "Other" },
 ]
 
 const genderIdentities = [
   { id: "male", title: "Man"},
   { id: "female", title: "Woman"},
   { id: "non-binary", title: "Non-binary"},
-  { id: "self-describe", title: "I prefer to self-describe"},
-  { id: "no", title: "I don't wish to answer"},
+  { id: "self-describe-gi", title: "I prefer to self-describe"},
+  { id: "dont-wish-gi", title: "I don't wish to answer"},
 ]
 
 const ethnicities = [
@@ -28,8 +29,8 @@ const ethnicities = [
   { id: "east-asian", title:"East Asian"},
   { id: "southeast-asian", title:"Southeast Asian"},
   { id: "south-asian", title:"South Asian"},
-  { id: "self-describe", title: "I prefer to self-describe"},
-  { id: "no", title: "I don't wish to answer"},
+  { id: "self-describe-e", title: "I prefer to self-describe"},
+  { id: "dont-wish-e", title: "I don't wish to answer"},
 ]
 
 const orientations = [
@@ -39,22 +40,22 @@ const orientations = [
   { id: "lesbian", title:"Lesbian"},
   { id: "queer", title:"Queer"},
   { id: "asexual", title:"Asexual"},  
-  { id: "self-describe", title: "I prefer to self-describe"},
-  { id: "no", title: "I don't wish to answer"},
+  { id: "self-describe-o", title: "I prefer to self-describe"},
+  { id: "dont-wish-o", title: "I don't wish to answer"},
 ]
 
 const disabilities = [
-  { id: "yes", title:"Yes"},
-  { id: "no", title:"No"},
-  { id: "self-describe", title: "I prefer to self-describe"},
-  { id: "no", title: "I don't wish to answer"},
+  { id: "yes-d", title:"Yes"},
+  { id: "no-d", title:"No"},
+  { id: "self-describe-d", title: "I prefer to self-describe"},
+  { id: "dont-wish-d", title: "I don't wish to answer"},
 ]
 
 const veteran = [
-  { id: "yes", title:"Yes, I am a veteran or active member"},
-  { id: "no", title:"No, I am not a veteran or active member"},
-  { id: "self-describe", title: "I prefer to self-describe"},
-  { id: "no", title: "I don't wish to answer"},
+  { id: "yes-v", title:"Yes, I am a veteran or active member"},
+  { id: "no-v", title:"No, I am not a veteran or active member"},
+  { id: "self-describe-v", title: "I prefer to self-describe"},
+  { id: "dont-wish-v", title: "I don't wish to answer"},
 ]
 
 const socials = [
@@ -79,9 +80,10 @@ export default function FormCards() {
 
   // socials here
   const [selectedSocials,setSocials] = useState({
-    linkedIn: '',
+    linkedin: '',
     github: '',
-    twitter: '',
+    x: '',
+    portfolio: '',
     instagram: '',
     tiktok: ''
   })
@@ -92,7 +94,9 @@ export default function FormCards() {
   const [genderIds,setGenderIds] = useState<string[]>([])
   const [orientationList,setOrientations] = useState<string[]>([])
 
-  const [hasDisability,setHasDisability] = useState<boolean>(false)
+  const [hasDisability,setHasDisability] = useState<boolean | null>(null)
+  const [isVeteran,setIsVeteran] = useState<boolean | null>(null)
+  const [source,setSource] = useState<string>('')
 
   // updates
   const updateEthnics = (checked: boolean, ethnic: string) => {
@@ -118,12 +122,33 @@ export default function FormCards() {
       setOrientations(prev => prev.filter(e => e != orientation))
     }
   }
+
+  const updateHasDisability = (chosen: string) => {
+    if(chosen != 'Yes' && chosen != 'No') {
+      setHasDisability(null); 
+      return;
+    }
+
+    setHasDisability(chosen == 'Yes');
+  }
+  const updateIsVeteran = (chosen: string) => {
+    if(chosen != 'yes-v' && chosen != 'no-v') {
+      setIsVeteran(null); 
+      return;
+    }
+
+    setIsVeteran(chosen == 'yes-v');
+  }
   
 
 
   useEffect(() => {
-    console.log(ethnics)
-  },[ethnics])
+    let userForm = {
+      firstName,lastName,email,phoneNumber,selectedSocials,state,aboutMeText,ethnics,genderIds,orientationList,hasDisability,isVeteran,source
+    }
+
+    console.dir(userForm)
+  },)
   
   return(
     <>
@@ -261,6 +286,13 @@ export default function FormCards() {
                             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-sky-600 sm:max-w-md" key={social.id}>
                               <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm ">{social.link}</span>
                               <input
+                                onChange={(e) => setSocials(prev => {
+
+                                  let newS = {[social.id]: e.target.value}
+
+                                  return {...prev,...newS}
+
+                                })}
                                 type="text"
                                 name={social.id}
                                 id={social.id}
@@ -408,7 +440,7 @@ export default function FormCards() {
                           {disabilities.map((disability) => (
                             <div className="flex items-center gap-x-3" key={disability.id}>{/* the singular of each is equal to 1 item within the list */}
                               <input
-                                // onChange={set}
+                                onClick={(e) => updateHasDisability(disability.title)}
                                 id={disability.id}
                                 name='disability'
                                 type="radio"
@@ -431,6 +463,7 @@ export default function FormCards() {
                             <div className="flex items-center gap-x-3" key={status.id}>{/* the singular of each is equal to 1 item within the list */}
                               <input
                                 id={status.id}
+                                onClick={(e) => updateIsVeteran(status.id)}
                                 name="veterans-status"
                                 type="radio"
                                 className="h-4 w-4 border-gray-300 text-sky-500 focus:ring-sky-600"
@@ -451,6 +484,7 @@ export default function FormCards() {
                           {places.map((place) => (
                             <div className="flex items-center gap-x-3" key={place.id}>{/* the singular of each is equal to 1 item within the list */}
                               <input
+                                onClick={() => setSource(place.title)}
                                 id={place.id}
                                 name="where-did-you-hear-about-us"
                                 type="radio"
