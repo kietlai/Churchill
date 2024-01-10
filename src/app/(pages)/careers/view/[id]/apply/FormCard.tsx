@@ -1,8 +1,8 @@
 'use client'
 import { PhotoIcon, UserCircleIcon, DocumentArrowUpIcon } from '@heroicons/react/24/solid'
 import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
-import { Reducer, use, useEffect, useReducer, useRef, useState } from 'react'
-import { NullLiteral } from 'typescript'
+import { FormEvent, Reducer, use, useEffect, useReducer, useRef, useState } from 'react'
+import { Resend } from 'resend'
 
 //Where you learned about us at
 const places = [
@@ -85,6 +85,29 @@ export default function FormCards() {
   const [phoneNumber,setPhoneNumber] = useState('')
   const [state,setState] = useState('')
 
+  async function sendAndSave(e: FormEvent){
+    e.preventDefault()
+    
+    await fetch('/api/sendandsave',{
+      method: 'POST',
+      body: JSON.stringify({email})
+    })
+
+    console.log('sent')
+  }
+
+
+  // test resend
+  useEffect(() => {
+    (async () => {
+      await fetch('/api/sendandsave',{
+        method: 'POST',
+        body: JSON.stringify({firstName: 'hero'})
+      })
+  
+      console.log('sent')
+    })()
+  },[])
 
   // socials here
   const [selectedSocials,setSocials] = useState({
@@ -198,7 +221,7 @@ export default function FormCards() {
               <h3 className="font-normal">Tell us why you are a good fit for Churchill.</h3>
             </div>
             <div className="px-4 py-5 sm:p-6">
-              <form>
+              <form onSubmit={sendAndSave}>
                 <div className="space-y-12">
                   <div className="border-b border-gray-900/10 pb-12">
                     
@@ -550,6 +573,7 @@ export default function FormCards() {
                   </button>
                 </div>
               </form>
+            
             </div>
           </div>
         </div>

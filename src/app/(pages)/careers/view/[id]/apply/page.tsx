@@ -43,6 +43,7 @@ export default async function JobApplication({ params }: { params: { id: string 
         <>
 
             <Desc key={job.id} id={job.id} title={job.title} desc={job.desc} longDesc={job.longDesc} salary={job.salary} teams={job.teams} location={job.type} times={job.times} reqs={job.reqs} bonus={job.bonus} aboutYou={job.aboutYou} responsibilities={job.responsibilities}/>
+            
             <section id="apply">
                 <FormCards />
             </section>
