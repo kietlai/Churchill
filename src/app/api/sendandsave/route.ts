@@ -1,3 +1,4 @@
+import EmailBody from '@/app/components/Email/BodyEmail';
 import { NextRequest, NextResponse } from 'next/server';
 import {Resend} from 'resend'
 
@@ -13,8 +14,8 @@ export async function POST(req: NextRequest){
     const { data, error } = await resend.emails.send({
         from: 'Acme <onboarding@resend.dev>',
         to: [body.email],
-        subject: `You're all Set!${body.firstName}`,
-        react: EmailTemplate()
+        subject: `You're all Set! ${body.firstName}`,
+        react: EmailBody()
     });
     
     if (error) {
