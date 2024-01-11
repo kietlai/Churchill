@@ -88,26 +88,28 @@ export default function FormCards() {
   async function sendAndSave(e: FormEvent){
     e.preventDefault()
     
-    await fetch('/api/sendandsave',{
+    const res = await fetch('/api/sendandsave',{
       method: 'POST',
-      body: JSON.stringify({email})
+      body: JSON.stringify({email, firstName,lastName})
     })
+
+    console.log(res.status,res.text)
 
     console.log('sent')
   }
 
 
-  // test resend
-  useEffect(() => {
-    (async () => {
-      await fetch('/api/sendandsave',{
-        method: 'POST',
-        body: JSON.stringify({firstName: 'hero'})
-      })
+  // // test resend
+  // useEffect(() => {
+  //   (async () => {
+  //     await fetch('/api/sendandsave',{
+  //       method: 'POST',
+  //       body: JSON.stringify({email, firstName,lastName})
+  //     })
   
-      console.log('sent')
-    })()
-  },[])
+  //     console.log('sent')
+  //   })()
+  // },[])
 
   // socials here
   const [selectedSocials,setSocials] = useState({
