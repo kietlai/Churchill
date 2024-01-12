@@ -70,7 +70,7 @@ const socials = [
 ]
 
 
-export default function FormCards() {
+export default function FormCards({appliedFor}: {appliedFor: string}) {
 
   const client = createClientComponentClient({
     supabaseUrl: process.env.supabaseUrl,
@@ -88,12 +88,12 @@ export default function FormCards() {
   async function sendAndSave(e: FormEvent){
     e.preventDefault()
     
-    const res = await fetch('/api/sendandsave',{
+    const res = await fetch('/api/send',{
       method: 'POST',
-      body: JSON.stringify({email, firstName,lastName})
+      body: JSON.stringify({email, firstName, lastName, appliedFor})
     })
 
-    console.log(res.status,res.text)
+   
 
     console.log('sent')
   }
