@@ -93,9 +93,8 @@ export default function FormCards({appliedFor}: {appliedFor: string}) {
       body: JSON.stringify({email, firstName, lastName, appliedFor})
     })
 
-   
 
-    console.log('sent')
+    console.log('sent',res.status)
   }
 
 
@@ -133,9 +132,9 @@ export default function FormCards({appliedFor}: {appliedFor: string}) {
 
 
   const [user,setUser] = useState<User | null>();
-  useEffect(() => {
-    client.auth.getUser().then(res => setUser(res.data.user))
-  })
+  // useEffect(() => {
+  //   client.auth.getUser().then(res => setUser(res.data.user))
+  // })
   // helper functions
   function handleFile(){
 

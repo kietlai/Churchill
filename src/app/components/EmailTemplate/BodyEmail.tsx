@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { string } from "zod"
 
 
 export default function EmailBody({

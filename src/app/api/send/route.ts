@@ -11,7 +11,7 @@ export async function POST(req: NextRequest){
 
     
     const {data, error} = await resend.emails.send({
-        from: 'Acme <onboarding@resend.dev>',
+        from: 'Churchill <careers@churchill.biz>',
         to: [body.email],
         subject: `You're all Set! ${body.firstName}`,
         react: EmailBody({firstName: body.firstName,lastName: body.lastName, position: body.appliedFor}) as React.ReactElement
@@ -22,6 +22,7 @@ export async function POST(req: NextRequest){
     }
 
     if(error){
+        console.log(error.message)
         return NextResponse.json(error)
     }
 
