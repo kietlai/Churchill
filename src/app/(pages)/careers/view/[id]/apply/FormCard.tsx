@@ -121,9 +121,9 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
     }
 
     // if user form is valid, add to db
-    if(applicationSchema.safeParse(newAppForm)){
+    if(applicationSchema.safeParse(newAppForm).success){
       await client.from('applications').insert(newAppForm)
-      
+
       // upload resume doc url
       const data = await client.storage.from('resumes').upload(`resume_${file.name}`,file)
       const resumeUrl = await client.storage.from('resumes').createSignedUrl(`resume_${file.name}`,100,{download: true})
