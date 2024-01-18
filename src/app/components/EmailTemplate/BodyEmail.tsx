@@ -20,12 +20,6 @@ export default function EmailBody({
         
         {/* add back in a relative infront off the isolate */}
         
-<<<<<<< HEAD
-        <div className="mx-auto max-w-2xl pt-12 lg:py-12 h-full place-self-center">
-          
-          <div className="text-left px-2">
-            <h1 className="text-4xl text-center font-bold tracking-tight text-gray-800">
-=======
         <Container className="mx-auto max-w-2xl pt-12 lg:py-12 h-full place-self-center">
           <Container className="flex justify-center pb-7">
             <Img 
@@ -35,7 +29,6 @@ export default function EmailBody({
           </Container>
           <Container className="text-left px-2">
             <Heading as="h1" className="text-4xl text-center font-bold tracking-tight text-gray-800">
->>>>>>> e8955ff8fb3ae6b175d299c07594a3b4f9faa8f7
               Thank You {firstName} for Applying at Churchill!
             </Heading>
             <Text className="mt-6 text-lg lg:text-2xl text-gray-700">
@@ -58,12 +51,6 @@ export default function EmailBody({
                 The Founding Team @ Churchill 
               </Text>
               
-<<<<<<< HEAD
-            </div>
-          </div>
-        </div>
-      </div>
-=======
             </Container>
             <Container className="flex items-center justify-center gap-x-6">
               <Container className="grid grid-cols-1 lg:grid-cols-3">
@@ -91,7 +78,6 @@ export default function EmailBody({
           </Container>
         </Container>
       </Container>
->>>>>>> e8955ff8fb3ae6b175d299c07594a3b4f9faa8f7
 
     </Tailwind>
   )

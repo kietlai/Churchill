@@ -85,6 +85,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
   const [email,setEmail] = useState('')
   const [phoneNumber,setPhoneNumber] = useState('')
   const [state,setState] = useState('')
+  const [file,setFile] = useState<any>()
 
   const [aboutMeText,setAboutMe] = useState('')
   const [ethnics,setEtnics] = useState<string[]>([])
@@ -107,7 +108,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
       gender: z.string(),
       applied_job_id: z.string()
     })
-
+  
     const newAppForm = {
       first_name: firstName,
       middle_name: '',
@@ -122,6 +123,17 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
     // if user form is valid, add to db
     if(applicationSchema.safeParse(newAppForm)){
       await client.from('applications').insert(newAppForm)
+      
+      // upload resume doc url
+      const data = await client.storage.from('resumes').upload(`resume_${file.name}`,file)
+      const resumeUrl = await client.storage.from('resumes').createSignedUrl(`resume_${file.name}`,100,{download: true})
+
+      // upload file to resume_docs table
+      await client.from('resume_docs').insert({
+        author_id: user?.id,
+        doc_url: resumeUrl.data?.signedUrl
+      })
+
 
       // send email Notification after application is submitted
       const res = await fetch('/api/send',{
@@ -159,19 +171,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
       
       const file = fileInput.current.files[0]
 
-      client.storage.from('resumes').upload(`resume_${file.name}`,file)
-        .then(data => console.log(data))
-        .then(() => {
-          const resumeUrl = client.storage.from('resumes').createSignedUrl(`resume_${file.name}`,100,{download: false})
-          .then(u => {
-
-            // upload file to resume_docs table
-            client.from('resume_docs').insert({
-              author_id: user?.id,
-              doc_url: u.data?.signedUrl
-            })
-        })
-      })
+      setFile(file)
        
 
         
@@ -415,7 +415,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
                                 className="relative cursor-pointer rounded-md bg-white font-semibold text-sky-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-600 focus-within:ring-offset-2 hover:text-sky-500"
                               >
                                 <span>Upload a Resume</span>
-                                <input onChange={() => handleFile()} ref={fileInput} id="file-upload" name="file-upload" type="file" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" className="sr-only" />
+                                <input required onChange={() => handleFile()} ref={fileInput} id="file-upload" name="file-upload" type="file" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" className="sr-only" />
                               </label>
                               <p className="pl-1">or drag and drop</p>
                             </div>
