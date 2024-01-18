@@ -17,12 +17,7 @@ export default function EmailBody({
         {/* add back in a relative infront off the isolate */}
         
         <div className="mx-auto max-w-2xl pt-12 lg:py-12 h-full place-self-center">
-          <div className="flex justify-center pb-7">
-            <img 
-              src="churchillblack.svg"  
-              className="h-16"
-            />
-          </div>
+          
           <div className="text-left px-2">
             <h1 className="text-4xl text-center font-bold tracking-tight text-gray-800">
               Thank You {firstName} for Applying at Churchill!
@@ -47,29 +42,6 @@ export default function EmailBody({
                 The Founding Team @ Churchill 
               </p>
               
-            </div>
-            <div className="flex items-center justify-center gap-x-6">
-              <div className="grid grid-cols-1 lg:grid-cols-3">
-                <div>
-                  <img 
-                  src="/Signatures/hero.svg"
-                  className="w-48"
-                  />
-                </div>
-                <div>
-                  <img 
-                  src="/Signatures/kiet.svg"
-                  className="w-48"
-                  />
-                </div>
-                <div>
-                  <img 
-                  src="/Signatures/ike.svg"
-                  className="w-48"
-                  />
-                </div>
-              </div>
-           
             </div>
           </div>
         </div>

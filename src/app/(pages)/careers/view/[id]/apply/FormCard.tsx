@@ -3,6 +3,7 @@ import { PhotoIcon, UserCircleIcon, DocumentArrowUpIcon } from '@heroicons/react
 import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { FormEvent, Reducer, use, useEffect, useReducer, useRef, useState } from 'react'
 import { Resend } from 'resend'
+import { z } from 'zod'
 
 //Where you learned about us at
 const places = [
@@ -70,7 +71,7 @@ const socials = [
 ]
 
 
-export default function FormCards({appliedFor}: {appliedFor: string}) {
+export default function FormCards({appliedFor, appliedForId}: {appliedFor: string, appliedForId: string}) {
 
   const client = createClientComponentClient({
     supabaseUrl: process.env.supabaseUrl,
@@ -85,30 +86,56 @@ export default function FormCards({appliedFor}: {appliedFor: string}) {
   const [phoneNumber,setPhoneNumber] = useState('')
   const [state,setState] = useState('')
 
+  const [aboutMeText,setAboutMe] = useState('')
+  const [ethnics,setEtnics] = useState<string[]>([])
+  const [genderIds,setGenderIds] = useState<string[]>([])
+  const [orientationList,setOrientations] = useState<string[]>([])
+
+  const [hasDisability,setHasDisability] = useState<boolean | null>(null)
+  const [isVeteran,setIsVeteran] = useState<boolean | null>(null)
+  const [source,setSource] = useState<string>('')
+
   async function sendAndSave(e: FormEvent){
     e.preventDefault()
-    
-    const res = await fetch('/api/send',{
-      method: 'POST',
-      body: JSON.stringify({email, firstName, lastName, appliedFor})
+
+    const applicationSchema = z.object({
+      first_name: z.string().min(3),
+      middle_name: z.string().optional(),
+      last_name: z.string(),
+      email: z.string(),
+      number: z.string().min(10),
+      gender: z.string(),
+      applied_job_id: z.string()
     })
 
+    const newAppForm = {
+      first_name: firstName,
+      middle_name: '',
+      last_name: lastName,
+      email: email,
+      number: phoneNumber,
+      gender: genderIds.join(','),
+      applied_job_id: appliedForId
 
-    console.log('sent',res.status)
+    }
+
+    // if user form is valid, add to db
+    if(applicationSchema.safeParse(newAppForm)){
+      await client.from('applications').insert(newAppForm)
+
+      // send email Notification after application is submitted
+      const res = await fetch('/api/send',{
+        method: 'POST',
+        body: JSON.stringify({email, firstName, lastName, appliedFor})
+      })
+      console.log('Sent Email Notification',res.status)
+
+
+    } else {
+      // let the user know it was invalid 
+      window.alert('Error: Please make sure all fields are filled in correctly.')
+    }
   }
-
-
-  // // test resend
-  // useEffect(() => {
-  //   (async () => {
-  //     await fetch('/api/sendandsave',{
-  //       method: 'POST',
-  //       body: JSON.stringify({email, firstName,lastName})
-  //     })
-  
-  //     console.log('sent')
-  //   })()
-  // },[])
 
   // socials here
   const [selectedSocials,setSocials] = useState({
@@ -119,16 +146,6 @@ export default function FormCards({appliedFor}: {appliedFor: string}) {
     instagram: '',
     tiktok: ''
   })
-  //
-
-  const [aboutMeText,setAboutMe] = useState('')
-  const [ethnics,setEtnics] = useState<string[]>([])
-  const [genderIds,setGenderIds] = useState<string[]>([])
-  const [orientationList,setOrientations] = useState<string[]>([])
-
-  const [hasDisability,setHasDisability] = useState<boolean | null>(null)
-  const [isVeteran,setIsVeteran] = useState<boolean | null>(null)
-  const [source,setSource] = useState<string>('')
 
 
   const [user,setUser] = useState<User | null>();
