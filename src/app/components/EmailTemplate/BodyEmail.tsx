@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 import { Heading, Tailwind, Img, Text, Link, Container } from "@react-email/components"
 
 
