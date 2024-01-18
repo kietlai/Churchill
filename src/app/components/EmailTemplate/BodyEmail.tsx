@@ -1,4 +1,6 @@
-import Image from "next/image"
+import { Heading, Tailwind, Img, Text, Link, Container } from "@react-email/components"
+
+
 
 
 export default function EmailBody({
@@ -11,70 +13,70 @@ export default function EmailBody({
   position: string,
 }) {
   return(
-    <>
-      <div className="isolate lg:overflow-hidden md:pt-3 h-full">
+    <Tailwind>
+      <Container className="isolate lg:overflow-hidden md:pt-3 h-full">
         
         {/* add back in a relative infront off the isolate */}
         
-        <div className="mx-auto max-w-2xl pt-12 lg:py-12 h-full place-self-center">
-          <div className="flex justify-center pb-7">
-            <img 
+        <Container className="mx-auto max-w-2xl pt-12 lg:py-12 h-full place-self-center">
+          <Container className="flex justify-center pb-7">
+            <Img 
               src="churchillblack.svg"  
               className="h-16"
             />
-          </div>
-          <div className="text-left px-2">
-            <h1 className="text-4xl text-center font-bold tracking-tight text-gray-800">
+          </Container>
+          <Container className="text-left px-2">
+            <Heading as="h1" className="text-4xl text-center font-bold tracking-tight text-gray-800">
               Thank You {firstName} for Applying at Churchill!
-            </h1>
-            <p className="mt-6 text-lg lg:text-2xl text-gray-700">
+            </Heading>
+            <Text className="mt-6 text-lg lg:text-2xl text-gray-700">
               Thank you for your recent application for the <span>{position}</span>. We are reaching out to tell you that we have recieved your application and appreciate your interest in our company.
-            </p>
-            <p className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
+            </Text>
+            <Text className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
               Our team will carefully review your application and assess your qualifications and experiences. This process will take some time. 
-            </p>
-            <p className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
-              We appreciate your patience and understanding during this process. In the meantime, feel free to explore more about Churchill on our <a className="text-black underline" href="https://churchill.biz" target="_blank">website</a>.
-            </p>
-            <div className="flex-left">
-              <p className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
+            </Text>
+            <Text className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
+              We appreciate your patience and understanding during this process. In the meantime, feel free to explore more about Churchill on our <Link className="text-black underline" href="https://churchill.biz" target="_blank">website</Link>.
+            </Text>
+            <Container className="flex-left">
+              <Text className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
                 Once again thank you for applying to Churchill. We look forward to contacting you again.
-              </p>
-              <p className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
+              </Text>
+              <Text className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
                 Best Regards,
-              </p>
-              <p className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
+              </Text>
+              <Text className="mt-4 text-lg lg:text-2xl leading-8 text-gray-700">
                 The Founding Team @ Churchill 
-              </p>
+              </Text>
               
-            </div>
-            <div className="flex items-center justify-center gap-x-6">
-              <div className="grid grid-cols-1 lg:grid-cols-3">
-                <div>
-                  <img 
+            </Container>
+            <Container className="flex items-center justify-center gap-x-6">
+              <Container className="grid grid-cols-1 lg:grid-cols-3">
+                <Container>
+                  <Img 
                   src="/Signatures/hero.svg"
                   className="w-48"
                   />
-                </div>
-                <div>
-                  <img 
+                </Container>
+                <Container>
+                  <Img 
                   src="/Signatures/kiet.svg"
                   className="w-48"
                   />
-                </div>
-                <div>
-                  <img 
+                </Container>
+                <Container>
+                  <Img 
                   src="/Signatures/ike.svg"
                   className="w-48"
                   />
-                </div>
-              </div>
+                </Container>
+              </Container>
            
-            </div>
-          </div>
-        </div>
-      </div>
+            </Container>
+          </Container>
+        </Container>
+      </Container>
 
-    </>
+    </Tailwind>
   )
 }
