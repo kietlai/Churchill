@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
-export default function Incorrect(errors: any[]) {
+export default function Incorrect(errors: string) {
   const [open, setOpen] = useState(true)
 
   return (
@@ -49,16 +49,12 @@ export default function Incorrect(errors: any[]) {
                   </div>
                   <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                     <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                      Deactivate account
+                      Insure that you filled out the form fully!
                     </Dialog.Title>
                     <div className="mt-2">
-                    {/* Loops through all of the errors and display each. */}
-                      {errors.map((error) => (
-                        <p key="error" className="text-sm text-gray-700">
-                          {error}<br />
-                        </p>
-                      ))}
-
+                      <p key="error" className="text-sm text-gray-700">
+                        {errors}<br />
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -68,14 +64,7 @@ export default function Incorrect(errors: any[]) {
                     className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                     onClick={() => setOpen(false)}
                   >
-                    Deactivate
-                  </button>
-                  <button
-                    type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                    onClick={() => setOpen(false)}
-                  >
-                    Cancel
+                    Review
                   </button>
                 </div>
               </Dialog.Panel>
