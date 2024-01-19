@@ -147,11 +147,11 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
 
 
       // send email Notification after application is submitted
-      // const res = await fetch('/api/send',{
-      //   method: 'POST',
-      //   body: JSON.stringify({email, firstName, lastName, appliedFor})
-      // })
-      // console.log('Sent Email Notification',res.status)
+      const res = await fetch('/api/send',{
+        method: 'POST',
+        body: JSON.stringify({email, firstName, lastName, appliedFor})
+      })
+      console.log('Sent Email Notification',res.status)
 
       setValidModal(true);
       //is the condition to pick either good notificaiton and alert user that the form has been submitted
