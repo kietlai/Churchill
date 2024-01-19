@@ -103,8 +103,8 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
       first_name: z.string().min(3),
       middle_name: z.string().optional(),
       last_name: z.string(),
-      email: z.string(),
-      number: z.string().min(10),
+      email: z.string().email({message: 'Please provide an email'}),
+      number: z.string().min(10,'phone number must be 10 numbers'),
       gender: z.string(),
       applied_job_id: z.string()
     })
@@ -121,7 +121,8 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
     }
 
     // if user form is valid, add to db
-    if(applicationSchema.safeParse(newAppForm).success){
+    const check = applicationSchema.safeParse(newAppForm)
+    if(check.success){
       await client.from('applications').insert(newAppForm)
 
       // upload resume doc url
@@ -145,7 +146,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
 
     } else {
       // let the user know it was invalid 
-      window.alert('Error: Please make sure all fields are filled in correctly.')
+      // check.error.errors[0].message
     }
   }
 
