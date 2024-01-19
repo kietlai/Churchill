@@ -4,6 +4,8 @@ import { User, createClientComponentClient } from '@supabase/auth-helpers-nextjs
 import { FormEvent, Reducer, use, useEffect, useReducer, useRef, useState } from 'react'
 import { Resend } from 'resend'
 import { z } from 'zod'
+import Correct from './GoodNotif'
+import Incorrect from './BadNotif'
 
 //Where you learned about us at
 const places = [
@@ -78,6 +80,11 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
     supabaseKey: process.env.SUPABASE_KEY
   })
 
+  // Validation
+  const [isError, setErrorModal] = useState(false);
+  const [isValid, setValidModal] = useState(false);
+
+
   const fileInput = useRef<HTMLInputElement>(null)
 
   const [firstName,setFName] = useState('')
@@ -96,6 +103,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
   const [isVeteran,setIsVeteran] = useState<boolean | null>(null)
   const [source,setSource] = useState<string>('')
 
+  let errors; 
   async function sendAndSave(e: FormEvent){
     e.preventDefault()
 
@@ -121,6 +129,8 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
     }
 
     // if user form is valid, add to db
+    
+
     const check = applicationSchema.safeParse(newAppForm)
     if(check.success){
       await client.from('applications').insert(newAppForm)
@@ -143,10 +153,15 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
       })
       console.log('Sent Email Notification',res.status)
 
+      setValidModal(true);
+      //is the condition to pick either good notificaiton and alert user that the form has been submitted
+
 
     } else {
       // let the user know it was invalid 
-      // check.error.errors[0].message
+      setErrorModal(true);
+      
+      errors = check.error.errors[0].message
     }
   }
 
@@ -597,6 +612,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
           </div>
         </div>
       </div>
+      {isValid && (<Correct />)}
     </>
   )
 }
