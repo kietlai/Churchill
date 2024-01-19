@@ -112,7 +112,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
       middle_name: z.string().optional(),
       last_name: z.string(),
       email: z.string().email({message: 'Please provide an email'}),
-      number: z.string().min(10,'phone number must be 10 numbers'),
+      number: z.string().min(10,'Phone number must be 10 characters long'),
       gender: z.string(),
       applied_job_id: z.string()
     })
@@ -147,11 +147,11 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
 
 
       // send email Notification after application is submitted
-      const res = await fetch('/api/send',{
-        method: 'POST',
-        body: JSON.stringify({email, firstName, lastName, appliedFor})
-      })
-      console.log('Sent Email Notification',res.status)
+      // const res = await fetch('/api/send',{
+      //   method: 'POST',
+      //   body: JSON.stringify({email, firstName, lastName, appliedFor})
+      // })
+      // console.log('Sent Email Notification',res.status)
 
       setValidModal(true);
       //is the condition to pick either good notificaiton and alert user that the form has been submitted
@@ -161,7 +161,9 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
       // let the user know it was invalid 
       setErrorModal(true);
       
-      errors = check.error.errors[0].message
+      errors = check.error.errors.map(e => e.message).join('\n')
+
+      window.alert(errors)
     }
   }
 
