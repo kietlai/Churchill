@@ -52,7 +52,7 @@ const FileUpload = () => {
             
             <div className={`relative transition-colors ${uploaded ? 'bg-green-500 hover:bg-green-400' : 'bg-sky-500 hover:bg-sky-400'} w-[150px] h-[50px]  flex rounded-lg justify-center items-center text-white`}>
                 <span>{uploaded ? 'Upload Saved' : 'Upload Resume'}</span>
-                <input  className={`absolute w-[100%] h-[45px]  opacity-0 `} onChange={() => startTrans(() => handleFile())} accept='.doc,.docx' ref={fileInput} type="file" name="" id="" />
+                <input  className={`absolute w-[100%] h-[45px]  opacity-0 `} onChange={() => startTrans(() => handleFile())} accept='.doc,.docx,.pdf' ref={fileInput} type="file" name="" id="" />
             </div>
         
         </>
