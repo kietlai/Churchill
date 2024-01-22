@@ -92,7 +92,7 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
   const [email,setEmail] = useState('')
   const [phoneNumber,setPhoneNumber] = useState('')
   const [state,setState] = useState('')
-  const [file,setFile] = useState<any>()
+  const [file,setFile] = useState<File | null>(null)
 
   const [aboutMeText,setAboutMe] = useState('')
   const [ethnics,setEtnics] = useState<string[]>([])
@@ -136,13 +136,19 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
       await client.from('applications').insert(newAppForm)
 
       // upload resume doc url
-      const data = await client.storage.from('resumes').upload(`resume_${file.name}`,file)
-      const resumeUrl = await client.storage.from('resumes').createSignedUrl(`resume_${file.name}`,100,{download: true})
+      let data;
+      let resumeUrl;
+      if(file){
+        data = await client.storage.from('resumes').upload(`resume_${file.name}`,file)
+        resumeUrl = await client.storage.from('resumes').createSignedUrl(`resume_${file.name}`,100,{download: true})
+      }
+
+      
 
       // upload file to resume_docs table
       await client.from('resume_docs').insert({
         author_id: user?.id,
-        doc_url: resumeUrl.data?.signedUrl
+        doc_url: resumeUrl?.data?.signedUrl
       })
 
 
@@ -427,15 +433,15 @@ export default function FormCards({appliedFor, appliedForId}: {appliedFor: strin
                         <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                           <div className="text-center">
                             <DocumentArrowUpIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
-                            <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                            <div className="mt-4 flex text-sm leading-6 text-gray-600 justify-center">
                               <label
                                 htmlFor="file-upload"
-                                className="relative cursor-pointer rounded-md bg-white font-semibold text-sky-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-600 focus-within:ring-offset-2 hover:text-sky-500"
+                                className="relative cursor-pointer rounded-md bg-white font-semibold text-sky-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-600 focus-within:ring-offset-"
                               >
-                                <span>Upload a Resume</span>
+                                <span>{file == null ? 'Upload a Resume' : `${file.name}`}</span>
                                 <input required onChange={() => handleFile()} ref={fileInput} id="file-upload" name="file-upload" type="file" accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf" className="sr-only" />
                               </label>
-                              <p className="pl-1">or drag and drop</p>
+                              {file == null ? <p className="pl-1">or drag and drop</p> : <p className='pl-1'> Click here to upload a different file </p>} 
                             </div>
                             <p className="text-xs leading-5 text-gray-600">PDF or Word Docs up to 350KB</p>
                           </div>
