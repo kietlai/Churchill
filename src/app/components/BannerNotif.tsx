@@ -29,7 +29,7 @@ export default function Notif() {
                 <svg viewBox="0 0 2 2" className="mx-2 inline h-0.5 w-0.5 fill-current" aria-hidden="true">
                   <circle cx={1} cy={1} r={1} />
                 </svg>
-                Join us at Hereford Jan 19, 2024 for the FBLA competition see what’s coming next&nbsp;<span aria-hidden="true">&rarr;</span>
+                Join us at Hereford Jan 22, 2024 for the FBLA competition see what’s coming next&nbsp;<span aria-hidden="true">&rarr;</span>
               </a>
             </p>
             <button onClick={() => setIsShowing((isShowing)=> !isShowing)} type="button" className="-m-1.5 flex-none p-1.5">

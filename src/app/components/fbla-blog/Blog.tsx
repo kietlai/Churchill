@@ -309,7 +309,7 @@ export default function BlogPost() {
         <div className="mt-16 max-w-2xl text-lg">
           <h2 className="text-4xl font-bold tracking-tight text-gray-900">About this project.</h2>
           <p className="mt-6">
-            Churchill was always ment to be a framework from which other SAAS apps. This project was our playground to test out new concepts, ideas and implementations of this technology. From this solid framework we plan to expand it into bigger more useful applications, more specifically in the student space.  
+            Churchill was built as a framework for future SaaS apps. This project was our playground to test out new concepts, ideas and implementations of this technology. From this solid framework we plan to expand it into bigger more useful applications, more specifically in the student space.  
           </p>
           <p className="mt-8">
             What might this project be? This project will also involve AI but will have it actually implemented. It is designed to help students do there absolute best in school and perform at the highest level.
