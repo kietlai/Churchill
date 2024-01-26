@@ -30,7 +30,7 @@ export default function Notif() {
                   <circle cx={1} cy={1} r={1} />
                 </svg>
                 Join us at Hereford Jan 22, 2024 for the FBLA competition. See the code here.&nbsp;<span aria-hidden="true">&rarr;</span>
-              </a>
+n              </a>
             </p>
             <button onClick={() => setIsShowing((isShowing)=> !isShowing)} type="button" className="-m-1.5 flex-none p-1.5">
               <span className="sr-only">Dismiss</span>
