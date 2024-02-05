@@ -1,10 +1,24 @@
-# Hi
+# Welcome to the code explanation!
 
 - Hi
 1. i have no clue what sgoing on
 2. This is what it is
 
-~~~js
-console.log('hello world')
+~~~jsx /const/#v
+const client = createClientComponentClient({
+  supabaseUrl: process.env.supabaseUrl,
+  supabaseKey: process.env.SUPABASE_KEY
+})
+
+const [query,setQuery] = useState<string>('')
+const [jobs,setJobs] = useState<any>([])
+
+useEffect(() => {
+
+  client.from('jobs').select().ilike("title",`%${query.toLowerCase()}%`)
+    .then((res) => setJobs(res.data))
+    
+},[query])
+
 ~~~
 

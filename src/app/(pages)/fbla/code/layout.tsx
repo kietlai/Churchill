@@ -19,7 +19,7 @@ export default function MDXLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <div className="prose mx-auto max-w-xl">
+        <div className="prose mx-auto max-w-2xl">
            {children}
         </div>
        
