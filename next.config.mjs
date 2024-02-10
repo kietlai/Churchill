@@ -48,7 +48,7 @@ const withMDX = createMDX({
             rehypeStringify, 
             [
                 rehypeShiki, { 
-                    theme: 'one-dark-pro'
+                    theme: 'one-dark-pro' //one-dark-pro
                 }
             ]
         ],

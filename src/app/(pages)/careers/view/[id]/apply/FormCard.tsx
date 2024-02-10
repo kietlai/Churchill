@@ -7,6 +7,8 @@ import { z } from 'zod'
 import Correct from './GoodNotif'
 import Incorrect from './BadNotif'
 
+// TODO supabase, file-upload, resend
+
 //Where you learned about us at
 const places = [
   { id: "email-p", title: "Email" },
