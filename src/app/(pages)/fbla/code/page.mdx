@@ -1,0 +1,30 @@
+# Welcome to the code explanation!
+
+
+## Fetching list of jobs from Supabase
+### Code
+```jsx /const/#v
+const client = createClientComponentClient({
+  supabaseUrl: process.env.supabaseUrl,
+  supabaseKey: process.env.SUPABASE_KEY
+}) // connection to supabase
+
+const [query,setQuery] = useState<string>('') // user's searched query
+const [jobs,setJobs] = useState<any>([]) // list of job openings
+
+useEffect(() => {
+
+  client.from('jobs').select().ilike("title",`%${query.toLowerCase()}%`)
+    .then((res) => setJobs(res.data))
+    
+},[query]) // query containing the user's input
+
+```
+### Code Explanation
+- The [/careers/listing](/careers/listing) route fetches (gets the data) the list of job openings from supabase upon rendering (loading). 
+- The <span className='text-yellow-500'>client</span> variable is the connection to supabase secure via the <span className='text-red-400'>supabaseUrl</span>(Username) and <span className='text-red-400'>supabaseKey</span>(Password) that lets supabase know who we are.
+- Lastly, the <span className='text-blue-500'>useEffect</span> function gets invoked whenever the <span className='text-red-400'>query</span>(user's searched input) changes.
+- 1. <span className='text-yellow-400'>client</span>.<span className='text-blue-500'>from</span>.<span className='text-blue-500'>select</span>() fetches the list of job openings
+  2. <span className='text-blue-500'>then</span>((<span className='text-red-400'>res</span>) => <span className='text-blue-500'>setJobs</span>(<span className='text-yellow-500'>res</span>.<span className='text-red-400'>data</span>)) stores the returned list of jobs in the <span className='text-yellow-500'>jobs</span> variable.
+  
+

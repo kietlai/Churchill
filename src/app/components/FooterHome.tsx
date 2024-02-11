@@ -3,18 +3,17 @@ import { Logo } from "./Logo"
 
 const navigation = {
   solutions: [
-    { name: "Employee Management", href: "#" },
-    { name: "AI Customer Interactions", href: "#" },
-    { name: "AI Adivsor", href: "#" },
-    { name: "Insights", href: "#" },
+    { name: "Employee Management", href: "/private" },
+    { name: "AI Customer Interactions", href: "/private" },
+    { name: "AI Advisor", href: "/private" },
+    { name: "Insights", href: "/private" },
   ],
   support: [
     { name: "Pricing", href: "/pricing" },
-    { name: "Guides", href: "#" },
   ],
   company: [
-    { name: "About", href: "/jobs/about" },
-    { name: "Jobs", href: "/jobs/listing" },
+    { name: "About", href: "/careers/about" },
+    { name: "Jobs", href: "/careers/listing" },
   ],
 
   social: [
@@ -34,7 +33,7 @@ const navigation = {
   ],
 }
 
-export default function Footer() {
+export default function FooterProductPage() {
   return (
     <>
       <footer className="bg-white" aria-labelledby="footer-heading">
@@ -103,7 +102,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-            <p className="text-xs leading-5 text-gray-500">&copy; 2023 Churchill, Inc. All rights reserved.</p>
+            <p className="text-xs leading-5 text-gray-500">&copy; 2024 Churchill, Inc. All rights reserved.</p>
           </div>
         </div>
       </footer>

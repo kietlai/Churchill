@@ -1,0 +1,26 @@
+{
+  "bonus": [
+    "Published apps on the App Store.",
+    "Experience with cross-platform mobile development.", 
+    "Familiarity with SupaBase"
+  ],
+  "aboutYou": [
+    "Strong problem-solving and coding skills.",
+    "Team player with excellent communication skills.",
+    "Passion for mobile application development.",
+    "Proactive attitude towards learning and adopting new technologies."
+  ],
+  "responsibilities": [
+    "Design and build advanced applications for the Android platform using Kotlin.",
+    "Collaborate with cross-functional teams to define, design, and ship new features.",
+    "Work on bug fixing and improving application performance.",
+    "Ensure the best possible performance, quality, and responsiveness of the application.",
+    "Stay updated on emerging technologies in mobile development."
+  ],
+  "reqs": [
+    "Strong understanding of iOS SDK, different versions of iOS, and how to deal with different screen sizes.",
+    "Expierence with RESTful APIs to connect iOS apps to back-end services.",
+    "Knowledge of Swift and/or SwiftUI",
+    "Familiarity with continuous integration and version control systems(Git & Github)."
+  ]
+}

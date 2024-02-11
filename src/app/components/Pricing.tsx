@@ -23,7 +23,7 @@ const tiers:  Readonly<Tier>[] = [
   {
     name: 'Freelancer',
     id: 'tier-freelancer',
-    href: '#',
+    href: '/private',
     price: { monthly: '$30', annually: '$300' },
     description: 'The basics tools to start your small business and run it seamlessly.',
     features: [ 
@@ -39,7 +39,7 @@ const tiers:  Readonly<Tier>[] = [
   {
     name: 'Startup',
     id: 'tier-startup',
-    href: '#',
+    href: '/private',
     price: { monthly: '$80', annually: '$875' },
     description: 'A plan that scales with your rapidly growing business.',
     features: [
@@ -56,7 +56,7 @@ const tiers:  Readonly<Tier>[] = [
   {
     name: 'Enterprise',
     id: 'tier-enterprise',
-    href: '#',
+    href: '/private',
     price: 'Custom',
     description: 'Dedicated support and infrastructure for your company.',
     features: [

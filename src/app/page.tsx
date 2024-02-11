@@ -3,12 +3,12 @@
 
 import Navbar from './components/Nav'
 import LogoClouds from './components/LogoCloud'
-import Footer from './components/FooterHome'
 import Notif from './components/BannerNotif'
 import Testimonial from './components/TestimonalNew'
 import Features from './components/Features'
 import CTAJoinUs from './components/JoinUs'
 import Hero from './components/HeroSection'
+import FooterProductPage from './components/FooterProductPage'
 
 export default function ProductPresentation() {
 
@@ -20,7 +20,7 @@ export default function ProductPresentation() {
       <Features />
       <Testimonial />
       <CTAJoinUs />
-      <Footer />
+      <FooterProductPage />
       <Notif />
     </>
   )

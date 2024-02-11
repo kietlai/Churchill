@@ -10,13 +10,18 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic':  'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'blue-background': "url('/public/blueBG.png')",
+        'gray-wave-bg': "url('/public/grayWaveBG.png')",
+        'white-wave-bg': "url('/public/whiteWaveBG.png')",
+        'gradient-bg': "url('/public/gradientBG.png')",
       },
     },
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+
   ],
 }
 export default config

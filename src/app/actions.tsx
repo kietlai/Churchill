@@ -4,7 +4,6 @@ import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { z } from 'zod'
 
-
 export async function createNewUser(formData: FormData){
     const client = createServerActionClient({
         cookies: () => cookies()
