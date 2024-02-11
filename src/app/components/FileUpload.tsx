@@ -5,9 +5,11 @@ import { useRef } from "react"
 
 const FileUpload = () => {
     const client = createClientComponentClient({
-    supabaseUrl: process.env.supabaseUrl,
-    supabaseKey: process.env.SUPABASE_KEY
+        supabaseUrl: process.env.supabaseUrl,
+        supabaseKey: process.env.SUPABASE_KEY
     })
+
+    
 
     const fileInput = useRef<HTMLInputElement>(null)
     
